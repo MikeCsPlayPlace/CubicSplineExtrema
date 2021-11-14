@@ -11,6 +11,6 @@ That will output a main executable that you can run via:
 The `main` executable that I created on my Intel-based Mac is also committed to github and it _may_ work for you without having to compile anything.
 
 The test files provided are in the `test_data` directory, so `../test_data` from here.
-You can then view the expected results for each of the files in an IDE or command line (e.g. `cat <filename`) to visually compare the exactly calculated extrema vs what the cubic extrema algorithm produced. Those expected files are named the same as the input files, but with `.expected_output.csv` as the extension.
+You can then view the expected results for each of the files in an IDE or command line (e.g. `cat <filename>`) to visually compare the exactly calculated extrema vs what the cubic extrema algorithm produced. Those expected files are named the same as the input files, but with `.expected_output.csv` as the extension.
 
 Each of the test data sets also an explanation for how the data was produced, and how the expected output values were determined for that input data. See the `test_data/README.md` for those details.
