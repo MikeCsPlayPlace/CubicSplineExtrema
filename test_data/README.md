@@ -55,12 +55,6 @@ Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do
 
 ---
 
-*15_point_underdamped_second_order_data.csv*
-
-*15_point_underdamped_second_order_data.expected_output.csv*
-
----
-
 *8_point_2_root_data.csv*
 
 *8_point_2_root_data.expected_output.csv*
