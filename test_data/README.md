@@ -1,4 +1,4 @@
-# Test Data Details (Under Construciton)
+# Test Data Details (Under Construction)
 
 This is a description of the data sets that were used in the original article. So presented here are some details of the input data sets, and the expected "ideal" output results.
 
