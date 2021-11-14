@@ -2,6 +2,7 @@
 
 This is a description of the data sets that were used in the original article. So presented here are some details of the input data sets, and the expected "ideal" output results.
 
+---
 
 *4_point_symmetric_simple_maxima_data.csv*
 
@@ -11,7 +12,7 @@ As the name suggests, this data is a simple dataset that consists of 4 points. T
 
 The single peak at the X axis can be determined by plotting the points and interrogating the Y value at X = 0. 
 
-
+---
 
 *3_point_asymmetric_data.csv*
 
@@ -21,7 +22,7 @@ This dataset is the same as the previous 4 point dataset, except that the first 
 
 Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
 
-
+---
 
 *7_point_trajectory_data.csv*
 
@@ -31,13 +32,17 @@ This data was hand-calculated based upon the standard equations for trajectories
 
 The Hmax (e.g. Y value) for this trajectory is calculated to be approximately 17,468.94 ft and at that height the X value is calculated as 34,937.89 ft.
 
-
+---
 
 *15_point_underdamped_second_order_data.csv*
 *15_point_underdamped_second_order_data.expected_output.csv*
 
+---
+
 *8_point_2_root_data.csv*
 *8_point_2_root_data.output_expected.csv*
+
+---
 
 *8_point_critically_damped_second_order_data.csv*
 *8_point_critically_damped_second_order_data.expected_output.csv*
