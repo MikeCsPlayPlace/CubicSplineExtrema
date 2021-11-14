@@ -6,13 +6,18 @@ This is a description of the data sets that were used in the original article. S
 
 *4_point_symmetric_simple_maxima_data.csv*
 
-As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values.
+As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values. So here are the arbitrary points I chose, plotted with an online simple polynomial solver&plotting program.
 
 ![](4_point_symmetric_simple_maxima_data.png)
 
 *4_point_symmetric_simple_maxima_data.expected_output.csv*
 
-The single peak at the X axis can be determined by plotting the points and interrogating the Y value at X = 0. 
+The single peak at the X axis was determined by manually inspecting the Y value at X = 0 in the online plotting program. The program indicated the peak to be at:
+
+0.0, 1.125
+
+Running the Cubic Extrema program yields a single extrema at:
+0.000000, 1.150000
 
 ---
 
@@ -25,10 +30,13 @@ This dataset is the same as the previous 4 point dataset, except that the first 
 *3_point_asymmetric_data.expected_output.csv*
 
 Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
+The peak for this data was determined via the plotting program by manually moving the cursor back and forth until Y was at a max value. That occurs at:
 
+0.000524, 1.125
 
 And the actual output from the program is:
-x=0.077350 y=1.096225
+
+0.077350, 1.096225
 
 ---
 
@@ -40,11 +48,10 @@ This data was hand-calculated based upon the standard equations for trajectories
 
 Since this is simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected x,y pair is:
 
-34,937.89, 17,468.94
+34937.89, 17468.94
 
 Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do so at:
-x=34896.042969 y=17469.068359
-which is good agreement
+34896.042969, 17469.068359
 
 ---
 
