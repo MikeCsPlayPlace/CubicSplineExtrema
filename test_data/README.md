@@ -22,7 +22,7 @@ This dataset is the same as the previous 4 point dataset, except that the first 
 
 Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
 
-!(3_point_asymmetric_data.png)
+![](3_point_asymmetric_data.png)
 And the actual output from the program is:
 x=0.077350 y=1.096225
 
