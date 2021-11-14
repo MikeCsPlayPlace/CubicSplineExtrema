@@ -53,9 +53,10 @@ int main(int argc, const char * argv[]) {
             str[len] = '\0';
             x_in[i] = atof(str);
             /* get the y value */
+            printf("\n%d x=%s",i+1, str);
             strcpy(str, line+len+1);
+            printf(" y=%s", str);
             y_in[i] = atof(str);
-            printf("\n%d x=%f y=%f",i+1, x_in[i], y_in[i]);
         }
         fclose(fp);
         /* allocate first structure of linked list of output extrema */
@@ -71,7 +72,7 @@ int main(int argc, const char * argv[]) {
             extr = first_extr;
             num_extr = 0;
             while (extr) {
-                printf("\n%d x=%f at y=%f", num_extr+1, extr->x, extr->y);
+                printf("\n%d x=%f y=%f", num_extr+1, extr->x, extr->y);
                 extr = extr->next;
                 num_extr++;
             }
