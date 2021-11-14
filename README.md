@@ -12,7 +12,7 @@ For some background, I actually came up with the algorithm when my then-boss cam
 
 But by then my boss had already found a different approach for his exact needs, so my work sat aside for a couple years until I decided to generalize the algorithm a bit more and then coded it in the C language to fully test it out ... and it actually worked ! So I thought it was worth of sharing with others, and therefore submitted an abstract to Dr. Dobb's and they contracted me to write up an article based on my work. Yay !
 
-Here is the first page of the 4 pages of my ramblings, and the code was printed at the back and is available here.
+Here is the first page of the 4 pages of my ramblings, and the code was printed at the back and is available here in this repository.
 
 ![The first page of the article](ArticleIntro.jpg) 
 
