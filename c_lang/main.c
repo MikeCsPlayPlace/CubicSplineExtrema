@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
     unsigned int i;           /* array indices */
     unsigned int num_extr;    /* number of extrema found */
     BYTE len;                 /* input data parsing variable */
-    char data_file[80];       /* ascii data file name */
+    char data_file[200];       /* ascii data file name */
     char str[40], line[80];   /* input data parsing variables */
     FILE *fp;                 /* ascii data file pointer */
     struct point *first_extr; /* pointer to the first extreme structure */
