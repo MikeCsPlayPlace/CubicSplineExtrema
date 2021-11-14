@@ -1,4 +1,4 @@
-# Test Data Details
+# Test Data Details (Under Construciton)
 
 This is a description of the data sets that were used in the original article. So presented here are some details of the input data sets, and the expected "ideal" output results.
 
@@ -63,10 +63,24 @@ Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do
 
 *8_point_2_root_data.csv*
 
-*8_point_2_root_data.output_expected.csv*
+*8_point_2_root_data.expected_output.csv*
+1.0, 1.0
+0.333, 1.148
+
+Cubic Extrema computed 2 extrema, as expected, at:
+1.087392, 1.010887
+0.325423, 1.147466
 
 ---
 
 *8_point_critically_damped_second_order_data.csv*
 
 *8_point_critically_damped_second_order_data.expected_output.csv*
+
+Expected:
+0.808, 2.179
+2.440, 1.935
+
+Computed via Cubic Extrema algorithm:
+0.779257, 2.132047
+2.408088, 1.935606
