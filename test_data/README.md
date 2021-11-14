@@ -22,6 +22,10 @@ This dataset is the same as the previous 4 point dataset, except that the first 
 
 Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
 
+!(3_point_asymmetric_data.png)
+And the actual output from the program is:
+x=0.077350 y=1.096225
+
 ---
 
 *7_point_trajectory_data.csv*
@@ -30,7 +34,13 @@ This data was hand-calculated based upon the standard equations for trajectories
 
 *7_point_trajectory_data.expected_output.csv*
 
-The Hmax (e.g. Y value) for this trajectory is calculated to be approximately 17,468.94 ft and at that height the X value is calculated as 34,937.89 ft.
+Since this is simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected x,y pair is:
+
+34,937.89, 17,468.94
+
+Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do so at:
+x=34896.042969 y=17469.068359 
+which is good agreement
 
 ---
 
