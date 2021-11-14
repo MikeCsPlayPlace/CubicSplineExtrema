@@ -35,8 +35,7 @@ BOOL FindCubicExtrema (
     valid_flag = FALSE;
     first_flag = TRUE;
     /* loop through all the input points and find the extrema */
-    for (i = 0; i < num_pnts - 1; i++)
-    {
+    for (i = 0; i < num_pnts - 1; i++) {
         /* compute the quadratic coefficients */
         a = 3.0 * (sec_deriv[i+1] - sec_deriv[i]);
         b = 6.0 * (x[i+1] * sec_deriv[i] - x[i] * sec_deriv[i+1]);
@@ -46,20 +45,17 @@ BOOL FindCubicExtrema (
             sec_deriv[i+1];
         /* determine the roots of the cubic extrema quadratic equation */
         root_stat = FindQuadRoots(a, b, c, &x1, &x2);
-        if (root_stat != FAILURE)
-        {
+        if (root_stat != FAILURE) {
             /* if root x1 was calculated successfully */
-            if (root_stat != FAILURE1)
-            {
+            if (root_stat != FAILURE1) {
                 /* Determine if root is within the interval */
-                if ((x1 > x[i]) && (x1 < x[i+1]))
-                {
+                if ((x1 > x[i]) && (x1 < x[i+1])) {
                     /* first root (extremum) */
-                    if (first_flag == TRUE)
+                    if (first_flag == TRUE) {
                         first_flag = FALSE;
+                    }
                     /* beyond first valid root so allocate next extremum structure */
-                    else
-                    {
+                    else {
                         extr->next = (struct point *)malloc(sizeof(struct point));
                         extr = extr->next;
                     }
@@ -71,17 +67,15 @@ BOOL FindCubicExtrema (
                 }
             }
             /* if root x2 was calculated successfully */
-            if (root_stat != FAILURE2)
-            {
+            if (root_stat != FAILURE2) {
                 /* Determine if root is within the current interval */
-                if ((x2 > x[i]) && (x2 < x[i+1]))
-                {
+                if ((x2 > x[i]) && (x2 < x[i+1])) {
                     /* first root (extremum) */
-                    if (first_flag == TRUE)
+                    if (first_flag == TRUE) {
                         first_flag = FALSE;
+                    }
                     /* beyond first valid root so allocate next extremum structure */
-                    else
-                    {
+                    else {
                         extr->next = (struct point *)malloc(sizeof(struct point));
                         extr = extr->next;
                     }
@@ -92,13 +86,13 @@ BOOL FindCubicExtrema (
                     valid_flag = TRUE;
                 }
             }
-        } /* end of if(root_stat ! = FAILURE) */
-    } /* end of for(i) */
+        }
+    }
     free(sec_deriv);
-    if (valid_flag == TRUE)
+    if (valid_flag == TRUE) {
         return SUCCESS;
-    else
-    {
+    }
+    else {
         /*  Set next to NULL just in case it was not set in the loop - this is
          so that free loop will operate properly upon return  */
         extr->next = NULL;
@@ -126,13 +120,11 @@ BOOL ComputeSecDerivs (
     /* even though the calling program is suppose to have guaranteed that the
      x values are increasing, assert that neither of the diagonal
      differences are zero to avoid a divide by zero condition */
-    for (i = 1; i < num_pnts - 1; i++)
-    {
+    for (i = 1; i < num_pnts - 1; i++) {
         main_diag[i-1] = 2.0 * (x[i+1] - x[i-1]);
         assert(main_diag[i-1] > 0);
     }
-    for (i = 0; i < num_pnts - 1; i++)
-    {
+    for (i = 0; i < num_pnts - 1; i++) {
         diag[i] = x[i+1] - x[i];
         assert(diag[i] > 0);
     }
@@ -143,8 +135,7 @@ BOOL ComputeSecDerivs (
     /* forward eliminate tridiagonal */
     sec_deriv[0] = 0.0;
     sec_deriv[num_pnts - 1] = 0.0;
-    for (i = 1; i < num_pnts - 2; i++)
-    {
+    for (i = 1; i < num_pnts - 2; i++) {
         ftemp = diag[i] / main_diag[i];
         right[i] -= (right[i-1] * ftemp);
         main_diag[i] -= (diag[i-1] * ftemp);
@@ -175,31 +166,35 @@ BOOL FindQuadRoots (
     BOOL  root_stat;  /* status of root computations */
     
     d = b * b - 4 * a *c;
-    if (d < 0)
+    if (d < 0) {
         return FAILURE;
-    else
-    {
+    }
+    else {
         d = (float)sqrt((double)d);
         /* make the result of sqrt the sign of b */
-        if (b < 0 )
+        if (b < 0 ) {
             d = -d;
+        }
         d = -0.5 * (b + d);
         /* solve for the roots of the quadratic */
         /* if both root computations will yield divide by zero ... forget it! */
-        if ( (a == 0) && (d == 0) )
+        if ( (a == 0) && (d == 0) ) {
             return FAILURE;
+        }
         
         root_stat = SUCCESS;
         /* compute first root if denominator a is not zero */
-        if (a == 0)
+        if (a == 0) {
             root_stat = FAILURE1;
-        else
+        } else {
             *x1 = d / a;
+        }
         /* compute second root if denominator d is not zero */
-        if (d == 0)
+        if (d == 0) {
             root_stat = FAILURE2;
-        else
+        } else {
             *x2 = c / d;
+        }
         return root_stat;
     }
 }

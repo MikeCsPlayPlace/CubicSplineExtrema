@@ -2,7 +2,7 @@
 //  main.c
 //  CubicExtrema
 //
-//  Created by Mike Courtney on 8/20/19.
+//  Created by Mike Courtney
 //
 
 #include <stdio.h>
@@ -28,11 +28,9 @@ int main(int argc, const char * argv[]) {
     /* open input data file and determine number of input points */
     printf("\n Enter name of input file: ");
     gets(data_file);
-    if((fp = fopen(data_file, "r")) != NULL)
-    {
+    if((fp = fopen(data_file, "r")) != NULL) {
         num_pnts = 0;
-        while(!feof(fp))
-        {
+        while(!feof(fp)) {
             fgets(line, 80, fp);
             num_pnts++;
         }
@@ -45,8 +43,7 @@ int main(int argc, const char * argv[]) {
         
         /* read in the each data line and parse into x and y arrays */
         rewind(fp);
-        for (i = 0; i < num_pnts; i++)
-        {
+        for (i = 0; i < num_pnts; i++) {
             /* get a line */
             fgets(line, 80, fp);
             len = strcspn(line,",");
@@ -58,6 +55,7 @@ int main(int argc, const char * argv[]) {
             /* get the y value */
             strcpy(str, line+len+1);
             y_in[i] = atof(str);
+            printf("\n%d x=%f y=%f",i+1, x_in[i], y_in[i]);
         }
         fclose(fp);
         /* allocate first structure of linked list of output extrema */
@@ -65,17 +63,15 @@ int main(int argc, const char * argv[]) {
         /* save the address of the first structure in the list */
         first_extr = extr;
         /* call the routine that computes the extrema */
-        if (FindCubicExtrema(num_pnts, x_in, y_in, extr) == FAILURE)
+        if (FindCubicExtrema(num_pnts, x_in, y_in, extr) == FAILURE) {
             printf("\n\n No extrema found !\n");
-        else
-        {
+        } else {
             /* print the linked list of extrema */
             printf("\n\n Relative extrema computed:");
             extr = first_extr;
             num_extr = 0;
-            while (extr)
-            {
-                printf("\n  %d.  y = %f at x = %f", num_extr+1, extr->y, extr->x);
+            while (extr) {
+                printf("\n%d x=%f at y=%f", num_extr+1, extr->x, extr->y);
                 extr = extr->next;
                 num_extr++;
             }
@@ -84,8 +80,7 @@ int main(int argc, const char * argv[]) {
         free(x_in);
         free(y_in);
         /* free the linked list of extreme structures */
-        do
-        {
+        do {
             /* point to first structure */
             extr = first_extr;
             /* save address of next extreme structure so that when we free the
@@ -95,8 +90,8 @@ int main(int argc, const char * argv[]) {
         }
         while (first_extr != NULL);
     }
-    else
+    else {
         printf("\n Couldn't open %s !", data_file);
-    
+    }
     return 0;
 }
