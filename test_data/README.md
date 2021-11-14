@@ -8,6 +8,8 @@ This is a description of the data sets that were used in the original article. S
 
 As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values.
 
+![](4_point_symmetric_simple_maxima_data.png)
+
 *4_point_symmetric_simple_maxima_data.expected_output.csv*
 
 The single peak at the X axis can be determined by plotting the points and interrogating the Y value at X = 0. 
@@ -18,11 +20,13 @@ The single peak at the X axis can be determined by plotting the points and inter
 
 This dataset is the same as the previous 4 point dataset, except that the first point is removed. It is intuitive that 2 data points cannot yield an extremum since that would only be a straight line. Thus 3 points represents the minumum number of data point that could yield any min or max when plotted out. So this is a stress test since it's the bare minimum input required to solve for an extrema. 
 
+![](3_point_asymmetric_data.png)
+
 *3_point_asymmetric_data.expected_output.csv*
 
 Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
 
-![](3_point_asymmetric_data.png)
+
 And the actual output from the program is:
 x=0.077350 y=1.096225
 
@@ -39,7 +43,7 @@ Since this is simple trajectory problem, we expect only 1 peak to occur. The sta
 34,937.89, 17,468.94
 
 Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do so at:
-x=34896.042969 y=17469.068359 
+x=34896.042969 y=17469.068359
 which is good agreement
 
 ---
