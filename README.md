@@ -12,6 +12,6 @@ But by then my boss had already found a different approach for his exact needs, 
 
 ![The first page of the article](ArticleIntro.jpg) 
 
-The algorithm was originally written in the C language and that is available here and now in the `c_lang` directory. The reason it's in C is that it was the performance language of choice back then and that's what I knew well. For time calibration for the "younger" readers here, in 1994 the biggest new movie at theaters was The Lion King, and the Sony Playstation was released for the first time. And in 1996 when the algorithm was published, the theater hit was Independence Day, and Nintendo 64 was launched !
+The algorithm was originally written in the C language and that is available here and now in the `c_lang` directory. The reason it's in C is that it was the performance language of choice back then and that's what I knew well. Some time calibration for the "younger" readers here: In 1994 the biggest new movie at theaters was "The Lion King", and the Sony Playstation was released for the first time. And in 1996 when the algorithm was published, the theater hit was "Independence Day", and Nintendo 64 was launched !
 
 So the languages that I know at varying levels since that publication and will be making the algorithm available in next are Java, Python, C#, and possibly C++. Therefore the 'ports' will involve redesign into object-oriented versions of the original implementation.
