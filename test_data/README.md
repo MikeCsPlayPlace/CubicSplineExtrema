@@ -6,13 +6,13 @@ This is a description of the data sets that were used in the original article. S
 
 *4_point_symmetric_simple_maxima_data.csv*
 
-As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values. So here are the arbitrary points I chose, plotted with an online simple polynomial solver&plotting program.
+As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values. So here are the arbitrary points I chose, plotted with an online simple polynomial solver & plotting program (i.e. https://arachnoid.com/polysolve).
 
 ![](4_point_symmetric_simple_maxima_data.png)
 
 *4_point_symmetric_simple_maxima_data.expected_output.csv*
 
-The single peak at the X axis was determined by manually inspecting the Y value at X = 0 in the online plotting program. The program indicated the peak to be at:
+The single peak at the X axis was determined by manually inspecting the Y value at X = 0 in the online plotting program. The program indicated the peak to be at this X and Y point, which of course will only be approximate since we are not computing the peak from an exact formula:
 
 0.0, 1.125
 
