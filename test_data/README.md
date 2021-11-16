@@ -73,6 +73,7 @@ Cubic Extrema computed 2 extrema, as expected, at:
 
 *8_point_critically_damped_second_order_data.csv*
 
+
 *8_point_critically_damped_second_order_data.expected_output.csv*
 
 Expected:
@@ -92,6 +93,7 @@ ___
 *15_point_underdamped_second_order.csv*
 
 y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45&deg)
+1-\sqrt{2\:}\:e^{-x}\:cos\:\left(4x\:-\:45^{\circ \:\:}\right),\:0^{\circ \:\:}<\:x<\:4
 
 *15_point_underdamped_second_order.expected_output.csv*
 
@@ -109,10 +111,12 @@ Expected:
 
 Computed:
 
-0.915187, 1.550893
+0.166656, -0.135369
 
-1.706701, 0.752118
+0.923947, 1.544151
 
-2.492035, 1.114065
+1.707713, 0.751052
 
-3.278525, 0.948627
+2.492182, 1.113593
+
+3.270703, 0.948298
