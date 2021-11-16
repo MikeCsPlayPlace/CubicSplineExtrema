@@ -94,7 +94,15 @@ ___
 
 y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45<sup>o</sup>)
 
+![](15_point_underdamped_polynomial_fit.png)
+
+![](UnderdampedSecondOrderSystem.png)
+
 *15_point_underdamped_second_order.expected_output.csv*
+
+![](UnderdampedSecondOrderSystemWithEquation.png)
+
+![](UnderdampedSecondOrderSystem0to3.5.png)
 
 Expected:
 
