@@ -60,11 +60,13 @@ Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do
 *8_point_2_root_data.expected_output.csv*
 
 1.0, 1.0
+
 0.333, 1.148
 
 Cubic Extrema computed 2 extrema, as expected, at:
 
 1.087392, 1.010887
+
 0.325423, 1.147466
 
 ---
@@ -76,11 +78,13 @@ Cubic Extrema computed 2 extrema, as expected, at:
 Expected:
 
 0.808, 2.179
+
 2.440, 1.935
 
 Computed via Cubic Extrema algorithm:
 
 0.779257, 2.132047
+
 2.408088, 1.935606
 
 ___
@@ -94,14 +98,21 @@ y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45&deg)
 Expected:
 
 0.135, -0.1986
+
 0.920, 1.5465
+
 1.706, 0.7508
+
 2.491, 1.1136
+
 3.277, 0.9482
 
 Computed:
 
 0.915187, 1.550893
+
 1.706701, 0.752118
+
 2.492035, 1.114065
+
 3.278525, 0.948627
