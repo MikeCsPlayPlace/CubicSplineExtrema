@@ -92,8 +92,7 @@ ___
 
 *15_point_underdamped_second_order.csv*
 
-y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45&deg)
-1-\sqrt{2\:}\:e^{-x}\:cos\:\left(4x\:-\:45^{\circ \:\:}\right),\:0^{\circ \:\:}<\:x<\:4
+y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45deg)
 
 *15_point_underdamped_second_order.expected_output.csv*
 
