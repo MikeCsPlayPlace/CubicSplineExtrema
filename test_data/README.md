@@ -92,7 +92,7 @@ ___
 
 *15_point_underdamped_second_order.csv*
 
-y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45deg)
+y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45<sup>o)
 
 *15_point_underdamped_second_order.expected_output.csv*
 
