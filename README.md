@@ -18,4 +18,6 @@ Here is the first of the 4 pages of my ramblings, and the code was printed at th
 
 The algorithm was originally written in the C language and that is available here and now in the `c_lang` directory. The reason it's in C is that it was the performance language of choice back then and that's what I knew well. Some time calibration for the "younger" readers here: In 1994 the biggest new movie at theaters was "The Lion King", and the Sony Playstation was released for the first time. And in 1996 when the algorithm was published, the theater hit was "Independence Day", and Nintendo 64 was launched !
 
-So the languages that I know at varying levels since that publication and will be making the algorithm available in next are Java, Python, C#, and possibly C++. Therefore the 'ports' will involve redesign into object-oriented versions of the original implementation.
+Currently I am finalizing the contents of the `test_data` directory. That will contain the original data I used in the development and testing, and hence was discussed in the printed article. It will also contain detailed explanations and plots of the data sets within the README file.
+
+Next I will be making the algorithm implementation available in other languages, which are slated to be Java, Python, C#, and possibly C++. And these 'ports' will involve redesign into object-oriented versions of the original implementation.
