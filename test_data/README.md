@@ -92,21 +92,21 @@ ___
 
 *15_point_underdamped_second_order.csv*
 
-y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45<sup>o)
+y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45<sup>o</sup>)
 
 *15_point_underdamped_second_order.expected_output.csv*
 
 Expected:
 
-0.135, -0.1986
+0.1351, -0.1986
 
-0.920, 1.5465
+0.9205, 1.5465
 
-1.706, 0.7508
+1.7059, 0.75083
 
-2.491, 1.1136
+2.4913, 1.1136
 
-3.277, 0.9482
+3.2767, 0.9482
 
 Computed:
 
