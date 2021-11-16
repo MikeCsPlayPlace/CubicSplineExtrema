@@ -105,7 +105,7 @@ The discrete input data for our fit "challenge" was created by evaluating the co
 
 *15_point_underdamped_second_order.expected_output.csv*
 
-If we ...
+If we go back to the first plot of the control system equation and zoom in on just the region of interest, we can evaluate what the minima and maxima of the true output curve. So those become our ideally expected extrema points.
 ![](UnderdampedSecondOrderSystem0to3.5.png)
 
 Expected:
