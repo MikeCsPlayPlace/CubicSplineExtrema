@@ -92,11 +92,15 @@ ___
 
 *15_point_underdamped_second_order.csv*
 
+An equation from control system theory for an underdamped system was used to produce our next data set:
 y(t) = 1- sqrt(2) e <sup>-t</sup> cos(4t - 45<sup>o</sup>)
 
+And when the continuous underdamped function is plotted, we can see how wildly the output swings. This hints at how unpredictable this output may be with a generalized algorithm such as the Cubic Spline Extrema. Remember that our algorithm has no knowledge of the equation that yielded the test data points. It only has the points themselves as input data.
+![](UnderdampedSecondOrderSystem.png)
+
+The discrete input data for our fit "challenge" was created by evaluating the control system equation from t=0 to 3.5 seconds in 0.25s steps. The resulting 15 data points were plotted at https://www.symbolab.com/ and the highest degreee polynomial fit was plotted to show what the approximate extrema look like based upon those data points.
 ![](15_point_underdamped_polynomial_fit.png)
 
-![](UnderdampedSecondOrderSystem.png)
 
 *15_point_underdamped_second_order.expected_output.csv*
 
