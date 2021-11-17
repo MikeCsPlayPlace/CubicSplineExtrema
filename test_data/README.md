@@ -1,6 +1,6 @@
 # Test Data Details
 
-This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in original article. Like in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
+This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in the original article. Like in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
 
 ---
 
