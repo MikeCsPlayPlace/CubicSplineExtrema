@@ -12,7 +12,7 @@ As the name suggests, this data is a simple dataset that consists of 4 points. T
 
 *4_point_symmetric_simple_maxima_data.expected_output.csv*
 
-The single peak at the X axis was determined by manually inspecting the Y value at X = 0 in the online plotting program. The program indicated the peak to be at this X and Y point, which of course will only be approximate since we are not computing the peak from an exact formula:
+The single peak at the x-axis was determined by manually inspecting the y value at x=0 in the online plotting program. The program indicated the peak to be at this X and Y point, which of course will only be approximate since we are not computing the peak from an exact formula:
 
 0.0, 1.125
 
@@ -24,7 +24,9 @@ Using the formula to compute the percent error, which in this case will be:
 
 <pre>    % error = (( computed – expected ) / expected) * 100</pre>
 
-shows that we have an x, y errors of only 0%, 2.2% !
+shows that we have a x and y errors of 0% and 8%, which isn't too bad since we don't know what the actual expected y value is anyway. We know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value based.
+
+This was a simple dataset to ease into things, but we will have more data sets that have precisely known expected values that we will look at also.
 
 ---
 
@@ -37,6 +39,7 @@ This dataset is the same as the previous 4 point dataset, except that the first 
 *3_point_asymmetric_data.expected_output.csv*
 
 Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
+
 The peak for this data was determined via the plotting program by manually moving the cursor back and forth until Y was at a max value. That occurs at:
 
 0.000524, 1.125
@@ -47,21 +50,27 @@ The output from running the program is:
 
 0.077350, 1.096225
 
-The x percent error will be abnormally high since we are dealing with approximations of the correct answer, very small numbers, and very limited data. So a worse case scenario for the most part. The y error is within a few percent though.
+The x percent error will be abnormally high since we are dealing with approximations of the correct answer, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is within a few percent though.
 
 ---
 
 *7_point_trajectory_data.csv*
 
-This data was hand-calculated based upon the standard equations for trajectories. A 45 degree shot at 1500 ft/sec was used for this data set.
+This data was hand-calculated based upon the standard equations for trajectories. A 45 degree shot at 1500 ft/sec was used for this data set. Here the plot of that from an online trajectory calculator.
+
+![image](trajectory_plot.png)
+
+I calculated trajectory x and y values for each 10 seconds of flight. The projectile hits the ground before the last sample is taken and thus the points appear to end mid-air. Here is a plot of those points that comprise the input data to our spline calculator.
+
+![](trajectory_data.png)
 
 *7_point_trajectory_data.expected_output.csv*
 
-Since this is simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected x,y pair is:
+Since this is a simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected x,y pair is:
 
 34937.89, 17468.94
 
-Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do so at the rounded values of:
+Therefore the Cubic Extrema should yield a single xy pair and it does indeed do so at the rounded values of:
 
 34896.043, 17469.068
 
@@ -99,7 +108,7 @@ The Cubic Extrema algorithm accurately computed 2 extrema at:
 
 0.325423, 1.147466
 
-Those represent errors of approxiately 8.7%, 1.0% and   
+Those represent errors of approxiately 8.7% and 1.0% for the first result, and 2.3% and 0.0% for the second result.
 
 ---
 
