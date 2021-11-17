@@ -6,7 +6,7 @@ This is a description of the data sets that were used in the development and tes
 
 *4_point_symmetric_simple_maxima_data.csv*
 
-As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values. It's a simple test case for the most part, but tests basic functionality. We do not know the exact location of the maximum though because an equation was not used to provide the points.
+As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the x-axis and thus represents a simple maxima. So this tests basic functionality. We will not know the exact y value of the maximum though because an equation was not used to provide the points.
 
 So here are the arbitrary points I chose, plotted with an online polynomial solver & plotting program (i.e. https://arachnoid.com/polysolve).
 
@@ -14,7 +14,7 @@ So here are the arbitrary points I chose, plotted with an online polynomial solv
 
 *4_point_symmetric_simple_maxima_data.expected_output.csv*
 
-The single peak at the x-axis was determined by manually inspecting the y value at x=0 in the online plotting program. The program indicated the peak to be at this point, which again will only be approximate since we are not computing the peak from an exact formula:
+The single peak at the x-axis was determined by manually inspecting the y value at x=0 in the online plotting program.
 
 0.0, 1.125
 
@@ -52,7 +52,7 @@ The output from running the program is:
 
 0.077350, 1.096225
 
-The percent errors will be abnormally high since we are dealing with approximations of input and output, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
+The percent errors will be abnormally high since we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
 
 ---
 
