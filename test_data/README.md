@@ -95,17 +95,14 @@ Here is a plot of the data points that I used as the input data, overlaid with a
 *8_point_2_root_data.expected_output.csv*
 
 And then computing the functions x and y values at the 2 extrema yields our actual expected values:
-<tt>
-0.333, 1.148
 
-1.0, 1.0
-</tt>
+<tt>0.333, 1.148</tt>
+
+<tt>1.0, 1.0</tt>
+
 The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
-<tt>
-0.325423, 1.147466
-
-1.087392, 1.010887
-</tt>
+<tt>0.325423, 1.147466</tt>
+<tt>1.087392, 1.010887</tt>
 Those represent errors of approxiately of 2.3% and 0.0% for first extrema, and 8.7% and 1.0% for the second.
 
 ---
@@ -131,29 +128,27 @@ If we go back to the plot of the control system equation, we can manually evalua
 ![](UnderdampedSecondOrderSystem0to3.5.png)
 
 Expected:
-<tt>
-0.1351, -0.1986
+<tt>0.1351, -0.1986</tt>
 
-0.9205, 1.5465
+<tt>0.9205, 1.5465</tt>
 
-1.7059, 0.75083
+<tt>1.7059, 0.75083</tt>
 
-2.4913, 1.1136
+<tt>2.4913, 1.1136</tt>
 
-3.2767, 0.9482
-</tt>
+<tt>3.2767, 0.9482</tt>
+
 Computed:
-<tt>
-0.166656, -0.135369
+<tt>0.166656, -0.135369</tt>
 
-0.923947, 1.544151
+<tt>0.923947, 1.544151</tt>
 
-1.707713, 0.751052
+<tt>1.707713, 0.751052</tt>
 
-2.492182, 1.113593
+<tt>2.492182, 1.113593</tt>
 
-3.270703, 0.948298
-</tt>
+<tt>3.270703, 0.948298</tt>
+  
 You can see by visual inspection that we corrected detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset.
 
 ___
