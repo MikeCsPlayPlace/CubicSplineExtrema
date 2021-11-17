@@ -162,10 +162,11 @@ ___
 
 This critically damped function data was not presented in the original article, but I used it in the algorithm development and testing. I am providing it here since it has 2 extrema but one is fairly subtle and is thus a good test case. 
 
-<pre>    f(t) = 2 - 2e<sup>-t</sup> +6te<sup>-2t</sup> + x + 1</pre>
+<pre>    f(x) = 2 - 2e<sup>-x</sup> +6xe<sup>-2x</sup></pre>
 
 ![](critically_damped_function.png)
 
+Solving for x at each 0.5 seconds for 4 seconds yields our input data set.
 
 ![](critically_damped_second_order_data.png)
 
