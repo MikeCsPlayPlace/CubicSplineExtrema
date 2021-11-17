@@ -158,13 +158,14 @@ You can see by visual inspection that we corrected detected 5 extrema, and that 
 
 ___
 
+*8_point_critically_damped_second_order_data.csv*
+
 This critically damped function data was not presented in the original article, but I used it in the algorithm development and testing. I am providing it here since it has 2 extrema but one is fairly subtle and is thus a good test case. 
 
 <pre>    f(t) = 2 - 2e<sup>-t</sup> +6te<sup>-2t</sup> + x + 1</pre>
 
 ![](critically_damped_function.png)
 
-*8_point_critically_damped_second_order_data.csv*
 
 ![](critically_damped_second_order_data.png)
 
