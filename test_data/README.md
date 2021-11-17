@@ -97,11 +97,13 @@ Here is a plot of the data points that I used as the input data, overlaid with a
 And then computing the functions x and y values at the 2 extrema yields our actual expected values:
 
 <tt>0.333, 1.148</tt>
+
 <tt>1.0, 1.0</tt>
 
 The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
 
 <tt>0.325423, 1.147466</tt>
+
 <tt>1.087392, 1.010887</tt>
 
 Those represent errors of approxiately of 2.3% and 0.0% for first extrema, and 8.7% and 1.0% for the second.
@@ -129,6 +131,7 @@ If we go back to the plot of the control system equation, we can manually evalua
 ![](UnderdampedSecondOrderSystem0to3.5.png)
 
 Expected:
+
 <tt>0.1351, -0.1986</tt>
 
 <tt>0.9205, 1.5465</tt>
@@ -140,6 +143,7 @@ Expected:
 <tt>3.2767, 0.9482</tt>
 
 Computed:
+
 <tt>0.166656, -0.135369</tt>
 
 <tt>0.923947, 1.544151</tt>
@@ -167,17 +171,17 @@ This critically damped function data was not presented in the original article, 
 *8_point_critically_damped_second_order_data.expected_output.csv*
 
 Expected:
-<tt>
-0.808, 2.179
 
-2.440, 1.935
-</tt>
+<tt>0.808, 2.179</tt>
+
+<tt>2.440, 1.935</tt>
+
 Computed via Cubic Extrema algorithm:
-<tt>
-0.779256, 2.132046
 
-2.409465, 1.935627
-</tt>
+<tt>0.779256, 2.132046</tt>
+
+<tt>2.409465, 1.935627</tt>
+
 Those represent errors of between 0.0 and 3.5% for all the values.
 
 
