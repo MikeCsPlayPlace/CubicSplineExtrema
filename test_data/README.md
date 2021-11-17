@@ -1,18 +1,20 @@
 # Test Data Details (Under Construction)
 
-This is a description of the data sets that were used in the original article. So presented here are some details of the input data sets, and the expected "ideal" output results.
+This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in original article. Like in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
 
 ---
 
 *4_point_symmetric_simple_maxima_data.csv*
 
-As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values. So here are the arbitrary points I chose, plotted with an online simple polynomial solver & plotting program (i.e. https://arachnoid.com/polysolve).
+As the name suggests, this data is a simple dataset that consists of 4 points. The peak is not one of the 4 points. The dataset is 'simple' though due to it being symmetric about a single peak at the X axis and thus represents a simple maxima. This dataset though does show that the algorithm can handle data that has negative X values. It's a simple test case for the most part, but tests basic functionality. We do not know the exact location of the maximum though because an equation was not used to provide the points.
+
+So here are the arbitrary points I chose, plotted with an online polynomial solver & plotting program (i.e. https://arachnoid.com/polysolve).
 
 ![](4_point_symmetric_simple_maxima_data.png)
 
 *4_point_symmetric_simple_maxima_data.expected_output.csv*
 
-The single peak at the x-axis was determined by manually inspecting the y value at x=0 in the online plotting program. The program indicated the peak to be at this X and Y point, which of course will only be approximate since we are not computing the peak from an exact formula:
+The single peak at the x-axis was determined by manually inspecting the y value at x=0 in the online plotting program. The program indicated the peak to be at this point, which again will only be approximate since we are not computing the peak from an exact formula:
 
 0.0, 1.125
 
@@ -24,23 +26,23 @@ Using the formula to compute the percent error, which in this case will be:
 
 <pre>    % error = (( computed – expected ) / expected) * 100</pre>
 
-shows that we have a x and y errors of 0% and 8%, which isn't too bad since we don't know what the actual expected y value is anyway. We know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value based.
+shows that we have a x and y errors of 0% and 8%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value.
 
-This was a simple dataset to ease into things, but we will have more data sets that have precisely known expected values that we will look at also.
+This was a simple dataset to ease into things, but we will have more data sets that have precisely known expected values that are much better tests of accuracy.
 
 ---
 
 *3_point_asymmetric_data.csv*
 
-This dataset is the same as the previous 4 point dataset, except that the first point is removed. It is intuitive that 2 data points cannot yield an extremum since that would only be a straight line. Thus 3 points represents the minumum number of data point that could yield any min or max when plotted out. So this is a stress test since it's the bare minimum input required to solve for an extrema. 
+This dataset is the same as the previous 4 point dataset, except that the first point is removed. It is intuitive that 2 data points cannot yield an extremum since that would only be a straight line. Thus 3 points represents the minumum number of data points that could yield any min or max when plotted out. So this is a stress test since it's the bare minimum input required to solve for an extrema.
 
 ![](3_point_asymmetric_data.png)
 
 *3_point_asymmetric_data.expected_output.csv*
 
-Since the first negative X point was removed, we would expect the extrema to shift to the positive direction compared to the 4 point symmetric result. Also, we should expect the computed direct result to be a bit less accurate given that only 3 input points are provided.
+Since the first negative point was removed, we would expect the extrema to shift to the right compared to the 4 point symmetric result. Also, we should expect the expected and the computed values to be less accurate.
 
-The peak for this data was determined via the plotting program by manually moving the cursor back and forth until Y was at a max value. That occurs at:
+The peak for this data was determined via the plotting program by manually moving the cursor back and forth until y was at a max value. That occurs at:
 
 0.000524, 1.125
 
@@ -50,7 +52,7 @@ The output from running the program is:
 
 0.077350, 1.096225
 
-The x percent error will be abnormally high since we are dealing with approximations of the correct answer, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is within a few percent though.
+The percent errors will be abnormally high since we are dealing with approximations of input and output, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
 
 ---
 
@@ -60,17 +62,17 @@ This data was hand-calculated based upon the standard equations for trajectories
 
 ![image](trajectory_plot.png)
 
-I calculated trajectory x and y values for each 10 seconds of flight. The projectile hits the ground before the last sample is taken and thus the points appear to end mid-air. Here is a plot of those points that comprise the input data to our spline calculator.
+I calculated trajectory x and y values for each 10 seconds of flight. The projectile hits the ground before the last sample is taken and thus the points appear to end mid-air. Here is a plot of those points that comprise the input data to the spline algorithm.
 
 ![](trajectory_data.png)
 
 *7_point_trajectory_data.expected_output.csv*
 
-Since this is a simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected xy pair is:
+Since this is a simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax for this trajectory is approximately 17,468.94 ft, at which the x value is calculated to be 34,937.89 ft. Therefore the calcuated expected xy pair is:
 
 34937.89, 17468.94
 
-Therefore the Cubic Extrema should yield a single xy pair and it does indeed do so at the rounded values of:
+The Cubic Extrema algorithm should yield a single xy pair and it does indeed at the rounded values of:
 
 34896.043, 17469.068
 
