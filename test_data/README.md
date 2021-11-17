@@ -22,9 +22,9 @@ Running the Cubic Extrema program yields a single extrema at:
 
 Using the formula to compute the percent error, which in this case will be:
 
-% error = (( experiment – actual ) / actual) * 100
+<pre>% error = (( experiment – actual ) / actual) * 100</pre>
 
-$\frac{ computed - expected }{expected}$
+shows that we have an x, y errors of only 0%, 2.2% !
 
 ---
 
