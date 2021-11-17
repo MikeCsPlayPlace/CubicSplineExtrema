@@ -1,4 +1,4 @@
-# Test Data Details (Under Construction)
+# Test Data Details
 
 This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in original article. Like in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
 
@@ -126,7 +126,8 @@ The discrete input data for our fit "challenge" was created by evaluating the co
 
 *15_point_underdamped_second_order.expected_output.csv*
 
-If we go back to the first plot of the control system equation and zoom in on just the region of interest, we can evaluate what the minima and maxima of the true output curve. So those become our ideally expected extrema points.
+If we go back to the plot of the control system equation, we can manually evaluate the minima and maxima of the true output curve. So those become our ideally expected extrema points.
+
 ![](UnderdampedSecondOrderSystem0to3.5.png)
 
 Expected:
@@ -153,9 +154,11 @@ Computed:
 
 3.270703, 0.948298
 
+You can see by visual inspection that we corrected detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset.
+
 ___
 
-This critically damped function data was not presented in the original article, but I did use it in the algorithm development and testing. I am providing it here for additionally testing since it has 2 extrema but one is fairly subtle and thus a good test case. 
+This critically damped function data was not presented in the original article, but I used it in the algorithm development and testing. I am providing it here since it has 2 extrema but one is fairly subtle and is thus a good test case. 
 
 <pre>    f(t) = 2 - 2e<sup>-t</sup> +6te<sup>-2t</sup> + x + 1</pre>
 
@@ -179,6 +182,6 @@ Computed via Cubic Extrema algorithm:
 
 2.409465, 1.935627
 
-Those represent errors of approxiately 3.5%, ..
+Those represent errors of between 0.0 and 3.5% for all the values.
 
 
