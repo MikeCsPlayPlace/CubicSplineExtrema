@@ -22,7 +22,7 @@ Running the Cubic Extrema program yields a single extrema at:
 
 Using the formula to compute the percent error, which in this case will be:
 
-<pre>    % error = (( experiment – actual ) / actual) * 100</pre>
+<pre>    % error = (( computed – expected ) / expected) * 100</pre>
 
 shows that we have an x, y errors of only 0%, 2.2% !
 
@@ -73,17 +73,33 @@ So the errors are about 0.1%, 0.0%
 
 *8_point_2_root_data.csv*
 
+This data was created by using using the function
+
+<pre>    f(x) = x<sup>3</sup> - 2x<sup>2</sup> + x + 1</pre>
+
+That allows us to evaluate at precise locations of x to determine the actual y values. 
+
+However, this function was used to create a stress-test case since we computed the y at regularly spaced x intervals, but then left out the middle section of data to mimic a lossy data set essentially. 
+
+Here is a plot of the data points that we used as the input data, overlaid with a best fit polynomial curve to give you an idea of where the extrema are.
+
+![](8_point_2_root.png)
+
 *8_point_2_root_data.expected_output.csv*
+
+And then computing the functions x and y values at the 2 extrema yields our actual expected values:
 
 1.0, 1.0
 
 0.333, 1.148
 
-Cubic Extrema computed 2 extrema, as expected, at:
+The Cubic Extrema algorithm accurately computed 2 extrema at:
 
 1.087392, 1.010887
 
 0.325423, 1.147466
+
+Those represent errors of approxiately 8.7%, 1.0% and   
 
 ---
 
@@ -103,6 +119,8 @@ Computed via Cubic Extrema algorithm:
 0.779257, 2.132047
 
 2.408088, 1.935606
+
+Those represent errors of approxiately 3.5%, ..
 
 ___
 
