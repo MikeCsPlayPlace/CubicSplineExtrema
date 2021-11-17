@@ -17,7 +17,14 @@ The single peak at the X axis was determined by manually inspecting the Y value 
 0.0, 1.125
 
 Running the Cubic Extrema program yields a single extrema at:
+
 0.000000, 1.150000
+
+Using the formula to compute the percent error, which in this case will be:
+
+% error = (( experiment – actual ) / actual) * 100
+
+$\frac{ computed - expected }{expected}$
 
 ---
 
