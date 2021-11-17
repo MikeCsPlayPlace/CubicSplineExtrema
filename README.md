@@ -16,8 +16,8 @@ Here is the first of the 4 pages of my ramblings, and the code was printed at th
 
 ![The first page of the article](ArticleIntro.jpg) 
 
-The algorithm was originally written in the C language and that is available here and now in the `c_lang` directory. The reason it's in C is that it was the performance language of choice back then and that's what I knew well. Some time calibration for the "younger" readers here: In 1994 the biggest new movie at theaters was "The Lion King", and the Sony Playstation was released for the first time. And in 1996 when the algorithm was published, the theater hit was "Independence Day", and Nintendo 64 was launched !
+The algorithm was originally implemented in the C language and that is available here and now in the `c_lang` directory. The reason it's in C is that it was the performance language of choice back then and that's what I knew well. Some time calibration for the "younger" readers here: In 1994 the biggest new movie at theaters was "The Lion King", and the Sony Playstation was released for the first time. And in 1996 when the algorithm was published, the theater hit was "Independence Day", and Nintendo 64 was launched !
 
-Currently I am finalizing the contents of the `test_data` directory. That will contain the original data I used in the development and testing, and hence was discussed in the printed article. It will also contain detailed explanations and plots of the data sets within the README file.
+A fairly extension and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and additional data. Also provided are detailed explanations and plots of the data sets.
 
-Next I will be making the algorithm implementation available in other languages, which are slated to be Java, Python, C#, and possibly C++. And these 'ports' will involve redesign into object-oriented versions of the original implementation.
+Currently I am documenting the algorithm itself and that will be available here soon. Then I will be making the algorithm implementation available in other software languages, which are slated to be Java, Python, C#, and possibly C++. And these 'ports' will involve redesign into object-oriented versions of the original implementation.
