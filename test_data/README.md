@@ -66,7 +66,7 @@ I calculated trajectory x and y values for each 10 seconds of flight. The projec
 
 *7_point_trajectory_data.expected_output.csv*
 
-Since this is a simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected x,y pair is:
+Since this is a simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax (e.g. Y value) for this trajectory is approximately 17,468.94 ft, at which the X value is calculated to be 34,937.89 ft. Therefore the calcuated expected xy pair is:
 
 34937.89, 17468.94
 
@@ -74,9 +74,9 @@ Therefore the Cubic Extrema should yield a single xy pair and it does indeed do 
 
 34896.043, 17469.068
 
-This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to compute the expected "correct" values.
+This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to determine the expected "correct" values.
 
-So the errors are about 0.1%, 0.0% 
+So the errors are about 0.1% and 0.0% for the x and y respectively.
 
 ---
 
