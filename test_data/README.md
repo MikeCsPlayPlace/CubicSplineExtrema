@@ -34,7 +34,7 @@ This was a simple dataset to ease into things, but we will have more data sets t
 
 *3_point_asymmetric_data.csv*
 
-This dataset is the same as the previous 4 point dataset, except that the first point is removed. It is intuitive that 2 data points cannot yield an extremum since that would only be a straight line. Thus 3 points represents the minumum number of data points that could yield any min or max when plotted out. So this is a stress test since it's the bare minimum input required to solve for an extrema.
+This dataset is the same as the previous dataset, except that the first point is removed. It is intuitive that 2 data points cannot yield an extremum since that would only be a straight line. Thus 3 points represents the minumum number of data points that could yield any min or max when plotted out. So this is a stress test since it's the bare minimum input required to solve for an extrema. This tests the robustness of the algorithm and implemention in determining an extrema based on such a minimal dataset.
 
 ![](3_point_asymmetric_data.png)
 
@@ -60,7 +60,7 @@ The percent errors will be abnormally high since we are dealing with approximati
 
 This data was hand-calculated based upon the standard equations for trajectories. A 45 degree shot at 1500 ft/sec was used for this data set. Here the plot of that from an online trajectory calculator.
 
-![image](trajectory_plot.png)
+![](trajectory_plot.png)
 
 I calculated trajectory x and y values for each 10 seconds of flight. The projectile hits the ground before the last sample is taken and thus the points appear to end mid-air. Here is a plot of those points that comprise the input data to the spline algorithm.
 
@@ -76,9 +76,7 @@ The Cubic Extrema algorithm should yield a single xy pair and it does indeed at 
 
 34896.043, 17469.068
 
-This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to determine the expected "correct" values.
-
-So the errors are about 0.1% and 0.0% for the x and y respectively.
+This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to determine the expected "correct" values. And the errors are about 0.1% and 0.0% for the x and y respectively.
 
 ---
 
@@ -88,29 +86,27 @@ This data was created by using using the function
 
 <pre>    f(x) = x<sup>3</sup> - 2x<sup>2</sup> + x + 1</pre>
 
-That allows us to evaluate at precise locations of x to determine the actual y values. 
+That allows us to evaluate at precise locations of x to determine the precise expected y values. This function was furthermore used to create a stress-test case since we computed the y at regularly spaced x intervals, but then left out the middle section of data to mimic a lossy data set essentially.
 
-However, this function was used to create a stress-test case since we computed the y at regularly spaced x intervals, but then left out the middle section of data to mimic a lossy data set essentially. 
+Here is a plot of the data points that I used as the input data, overlaid with a best fit polynomial curve to give you an idea of where the extrema are.
 
-Here is a plot of the data points that we used as the input data, overlaid with a best fit polynomial curve to give you an idea of where the extrema are.
-
-![](8_point_2_root.png)
+![missing data](8_point_2_root.png)
 
 *8_point_2_root_data.expected_output.csv*
 
 And then computing the functions x and y values at the 2 extrema yields our actual expected values:
 
-1.0, 1.0
-
 0.333, 1.148
 
-The Cubic Extrema algorithm accurately computed 2 extrema at:
+1.0, 1.0
 
-1.087392, 1.010887
+The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
 
 0.325423, 1.147466
 
-Those represent errors of approxiately 8.7% and 1.0% for the first result, and 2.3% and 0.0% for the second result.
+1.087392, 1.010887
+
+Those represent errors of approxiately of 2.3% and 0.0% for first extrema, and 8.7% and 1.0% for the second.
 
 ---
 
@@ -120,11 +116,11 @@ An equation from control system theory for an underdamped system was used to pro
 
 <pre>    y(t) = 1 - sqrt(2) e<sup>-t</sup> cos(4t - 45<sup>o</sup>)</pre>
 
-And when the continuous underdamped function is plotted, we can see how wildly the output swings. This hints at how unpredictable this output may be with a generalized algorithm such as the Cubic Spline Extrema. Remember that our algorithm has no knowledge of the equation that yielded the test data points. It only has the points themselves as input data.
+And when the continuous underdamped function is plotted, we can see how wildly the output swings. This hints at how unpredictable this output may be with a generalized algorithm such as the Cubic Spline Extrema. Remember that our algorithm has no knowledge of the equation that yielded the test data points. It only has the points themselves as input.
 
 ![](UnderdampedSecondOrderSystemWithEquation.png)
 
-The discrete input data for our fit "challenge" was created by evaluating the control system equation from t=0 to 3.5 seconds in 0.25s steps. The resulting 15 data points were plotted at https://www.symbolab.com/ and the highest degreee polynomial fit was plotted to show what the approximate extrema look like based upon those data points.
+The discrete input data for our fit "challenge" was created by evaluating the control system equation from t=0 to 3.5 seconds in 0.25 steps. The resulting 15 data points were plotted at https://www.symbolab.com/ and the highest degreee polynomial fit was plotted to show what the approximate extrema look like based upon those data points.
 ![](15_point_underdamped_polynomial_fit.png)
 
 
