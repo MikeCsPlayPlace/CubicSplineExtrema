@@ -112,27 +112,6 @@ Those represent errors of approxiately 8.7% and 1.0% for the first result, and 2
 
 ---
 
-*8_point_critically_damped_second_order_data.csv*
-
-
-*8_point_critically_damped_second_order_data.expected_output.csv*
-
-Expected:
-
-0.808, 2.179
-
-2.440, 1.935
-
-Computed via Cubic Extrema algorithm:
-
-0.779257, 2.132047
-
-2.408088, 1.935606
-
-Those represent errors of approxiately 3.5%, ..
-
-___
-
 *15_point_underdamped_second_order.csv*
 
 An equation from control system theory for an underdamped system was used to produce our next data set:
@@ -175,3 +154,33 @@ Computed:
 2.492182, 1.113593
 
 3.270703, 0.948298
+
+___
+
+This critically damped function data was not presented in the original article, but I did use it in the algorithm development and testing. I am providing it here for additionally testing since it has 2 extrema but one is fairly subtle and thus a good test case. 
+
+<pre>    f(t) = 2 - 2e<sup>-t</sup> +6te<sup>-2t</sup> + x + 1</pre>
+
+![](critically_damped_function.png)
+
+*8_point_critically_damped_second_order_data.csv*
+
+![](critically_damped_second_order_data.png)
+
+*8_point_critically_damped_second_order_data.expected_output.csv*
+
+Expected:
+
+0.808, 2.179
+
+2.440, 1.935
+
+Computed via Cubic Extrema algorithm:
+
+0.779256, 2.132046
+
+2.409465, 1.935627
+
+Those represent errors of approxiately 3.5%, ..
+
+
