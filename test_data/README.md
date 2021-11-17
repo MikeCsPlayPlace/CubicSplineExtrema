@@ -44,13 +44,13 @@ Since the first negative point was removed, we would expect the extrema to shift
 
 The peak for this data was determined via the plotting program by manually moving the cursor back and forth until y was at a max value. That occurs at:
 
-0.000524, 1.125
+<tt>0.000524, 1.125</tt>
 
 Again, we don't know the true peak location since the data is not based on an input formula, so there is no "correct" value that we can compare to.
 
 The output from running the program is:
 
-0.077350, 1.096225
+<tt>0.077350, 1.096225</tt>
 
 The percent errors will be abnormally high since we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
 
@@ -70,11 +70,11 @@ I calculated trajectory x and y values for each 10 seconds of flight. The projec
 
 Since this is a simple trajectory problem, we expect only 1 peak to occur. The standard trajectory equations were used to compute that Hmax for this trajectory is approximately 17,468.94 ft, at which the x value is calculated to be 34,937.89 ft. Therefore the calcuated expected xy pair is:
 
-34937.89, 17468.94
+<tt>34937.89, 17468.94</tt>
 
 The Cubic Extrema algorithm should yield a single xy pair and it does indeed at the rounded values of:
 
-34896.043, 17469.068
+<tt>34896.043, 17469.068</tt>
 
 This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to determine the expected "correct" values. And the errors are about 0.1% and 0.0% for the x and y respectively.
 
@@ -95,17 +95,17 @@ Here is a plot of the data points that I used as the input data, overlaid with a
 *8_point_2_root_data.expected_output.csv*
 
 And then computing the functions x and y values at the 2 extrema yields our actual expected values:
-
+<tt>
 0.333, 1.148
 
 1.0, 1.0
-
+</tt>
 The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
-
+<tt>
 0.325423, 1.147466
 
 1.087392, 1.010887
-
+</tt>
 Those represent errors of approxiately of 2.3% and 0.0% for first extrema, and 8.7% and 1.0% for the second.
 
 ---
@@ -131,7 +131,7 @@ If we go back to the plot of the control system equation, we can manually evalua
 ![](UnderdampedSecondOrderSystem0to3.5.png)
 
 Expected:
-
+<tt>
 0.1351, -0.1986
 
 0.9205, 1.5465
@@ -141,9 +141,9 @@ Expected:
 2.4913, 1.1136
 
 3.2767, 0.9482
-
+</tt>
 Computed:
-
+<tt>
 0.166656, -0.135369
 
 0.923947, 1.544151
@@ -153,7 +153,7 @@ Computed:
 2.492182, 1.113593
 
 3.270703, 0.948298
-
+</tt>
 You can see by visual inspection that we corrected detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset.
 
 ___
@@ -171,17 +171,17 @@ This critically damped function data was not presented in the original article, 
 *8_point_critically_damped_second_order_data.expected_output.csv*
 
 Expected:
-
+<tt>
 0.808, 2.179
 
 2.440, 1.935
-
+</tt>
 Computed via Cubic Extrema algorithm:
-
+<tt>
 0.779256, 2.132046
 
 2.409465, 1.935627
-
+</tt>
 Those represent errors of between 0.0 and 3.5% for all the values.
 
 
