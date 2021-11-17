@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cubic Spline Extrema Algorithm</title>
+    <meta name="google-site-verification" content="t0kzZqY3XPevrEjHSQYU5nOs7AQEk2640LC_4_i7MFU" />  
+  </head>
+  <body>
+    <h1>Cubic Spline Extrema Algorithm</h1>
+    <h2>Overview</h2>
+    <p>The cubic spline extrema algorithm computes the relative extrema (i.e. maximums and minimums) of the continuous function that describes a discrete data set.
+    <p>It uses all the given data to compute second derivatives  at each point, which are called knots in cubic spline parlance.
+      Incidentally, the term 'spline' originates from drafting, in which pieces of wood were used to 'draw' smooth curves by bending them between knots. 
+      Those pieces of wood were called splines. The shape assumbes by the spline between the knots is essentially a third degress (or cubic) polynomial.
+      A disadvantage of tradition polynomial interpolators that attempt to solve complicated data-fitting is that they attempt to derive an
+      single algorithm that satisfies all the data points. And furthermore, iterative searching across those curves is required to 
+      hunt for the extrema.
+      However, spline interpolation computes a different polynomial at each interval. 
+      And my algorithm takes that a step further by forcing constraints at the knots while computing derivatives such that we yield equations
+      that describe the existence and location of any extrema within each spline.
+      This process directly yields the x values without the need for iterative searching. The y values are then computed based upon the associated spline equation.
+    </p>
+    <h2>Derivation</h2>
+    <p>
+      The goal of cubic spline intepolation is to derive an interpolation formula in which the the first and second derivatives of the spline 
+      polynomials are equals at the knots. This results in a formula with interval splines that intersect at the knots while exhibiting 
+      a smooth transition from one interval to the next.
+      Given a data set described by the general function y<sub>j</sub> = y(x<sub>j</sub>),
+      the linear interpolation in the interval between x<sub>i</sub> and x<sub>i+1</sub> 
+      can be expressed as equation 1:
+      <br><tt><i>&nbsp;&nbsp;y = Ay<sub>i</sub> + By<sub>i+1</sub> + Cy" + Dy"<sub>i+1</sub> </i></tt>
+      <br>where <i>"</i> denotes the second derivative and the following apply:
+      <br><tt><i>&nbsp;&nbsp;A = (x<sub>i+1</sub> - x) / (x<sub>i+1</sub> - x<sub>i</sub>) </i></tt>
+      <br><tt><i>&nbsp;&nbsp;B = 1 - A </i></tt>
+      <br><tt><i>&nbsp;&nbsp;C = &frac16; [(A<sup>3</sup> - A)(x<sub>i+1</sub> - x<sub>i</sub>)<sup>2</sup>] </i></tt>
+      <br><tt><i>&nbsp;&nbsp;D = &frac16; [(B<sup>3</sup> - B)(x<sub>i+1</sub> - x<sub>i</sub>)<sup>2</sup>] </i></tt>
+      <br>The first derivative of our equation for <i>y</i> is denoted as <i>dy/dx</i> and is solved as equation 2:
+      <br><tt><i>&nbsp;&nbsp;dy/dx = (y<sub>i+1</sub> - y<sub>i</sub>) / (x<sub>i+1</sub> - x<sub>i</sub>) - 
+        &frac16; [(3A<sup>2</sup> - 1)(x<sub>i+1</sub> - x<sub>i</sub>) * y"<sub>i</sub>] + 
+        &frac16; [(3B<sup>2</sup> - 1)(x<sub>i+1</sub> - x<sub>i</sub>) * y"<sub>i+1</sub>]
+      </i></tt>
+      <br>However, if you then take this further and set the above equation to 0, then a new equation can be derived
+      that represents the extrema of our first equation. This then allows the identification of the points at which u remains 
+      constant with repect to finite changes in x.
+      <br>Expressing equation 2 in the quadratic form 
+      <tt><i>ax<sup>2</sup> + bx + c = 0</i></tt>
+      such that x can be solved, we get the components of the quadratic:
+      <br><tt><i>&nbsp;&nbsp;a = 3(y"<sub>i+1</sub> - y"<sub>i</sub>) </i></tt>
+      <br><tt><i>&nbsp;&nbsp;b = 6(x<sub>i+1</sub>y"<sub>i</sub> - x<sub>i</sub>y"<sub>i+1</sub>) </i></tt>
+      <br><tt><i>&nbsp;&nbsp;c = 6y<sub>i+1</sub> - 6y<sub>i</sub>
+        - (2x<sup>2</sup><sub>i+1</sub> - x<sup>2</sup><sub>i</sub> + 2x<sub>i</sub>x<sub>i+1</sub>) * y"<sub>i</sub> 
+        - (x<sup>2</sup><sub>i+1</sub> - 2x<sup>2</sup><sub>i</sub> - 2x<sub>i</sub>x<sub>i+1</sub>) * y"<sub>i+1</sub>
+      </i></tt>
+      <br>and solving for that quadratic is essentially the foundation of cubic extrema equation.
+      <br> Using these cubic-extrema quadratic coefficents and quadratic root solver yields the candidate extrema.
+      If they lie within the current interval of examination then they are a valid abscissa value at which the 
+      ordinate extrema exists. If not, then no extrema lies within that particular spline interval.
+      <h2>Overall Code Flow - TODO</h2>
+      <h2>Computing the Second Derivatives - TODO</h2>
+      <h2>Computing the Quadratic Roots - TODO</h2>
+      <h2>Performing Bounds Checking - TODO</h2>
+      <h2>Extremum-Ordinate Computation - TODO</h2>
+
+    </p>
+
+  </body>
+</html>
