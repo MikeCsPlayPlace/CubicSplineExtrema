@@ -16,11 +16,11 @@ So here are the arbitrary points I chose, plotted with an online polynomial solv
 
 The single peak at the x-axis was determined by manually inspecting the y value at x=0 in the online plotting program.
 
-0.0, 1.125
+<tt>0.0, 1.125</tt>
 
 Running the Cubic Extrema program yields a single extrema at:
 
-0.000000, 1.150000
+<tt>0.000000, 1.150000</tt>
 
 Using the formula to compute the percent error, which in this case will be:
 
