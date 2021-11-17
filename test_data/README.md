@@ -41,9 +41,13 @@ The peak for this data was determined via the plotting program by manually movin
 
 0.000524, 1.125
 
-And the actual output from the program is:
+Again, we don't know the true peak location since the data is not based on an input formula, so there is no "correct" value that we can compare to.
+
+The output from running the program is:
 
 0.077350, 1.096225
+
+The x percent error will be abnormally high since we are dealing with approximations of the correct answer, very small numbers, and very limited data. So a worse case scenario for the most part. The y error is within a few percent though.
 
 ---
 
@@ -57,8 +61,13 @@ Since this is simple trajectory problem, we expect only 1 peak to occur. The sta
 
 34937.89, 17468.94
 
-Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do so at:
-34896.042969, 17469.068359
+Therefore the Cubic Extrema should yield a single x,y pair and it does indeed do so at the rounded values of:
+
+34896.043, 17469.068
+
+This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to compute the expected "correct" values.
+
+So the errors are about 0.1%, 0.0% 
 
 ---
 
