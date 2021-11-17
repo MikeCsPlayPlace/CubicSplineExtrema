@@ -162,7 +162,7 @@ ___
 
 This critically damped function data was not presented in the original article, but I used it in the algorithm development and testing. I am providing it here since it has 2 extrema but one is fairly subtle and is thus a good test case. 
 
-<pre>    f(x) = 2 - 2e<sup>-x</sup> +6xe<sup>-2x</sup></pre>
+<pre>    f(x) = 2 - 2e<sup>-x</sup> + 6xe<sup>-2x</sup></pre>
 
 ![](critically_damped_function.png)
 
