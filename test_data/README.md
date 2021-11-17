@@ -97,12 +97,13 @@ Here is a plot of the data points that I used as the input data, overlaid with a
 And then computing the functions x and y values at the 2 extrema yields our actual expected values:
 
 <tt>0.333, 1.148</tt>
-
 <tt>1.0, 1.0</tt>
 
 The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
+
 <tt>0.325423, 1.147466</tt>
 <tt>1.087392, 1.010887</tt>
+
 Those represent errors of approxiately of 2.3% and 0.0% for first extrema, and 8.7% and 1.0% for the second.
 
 ---
