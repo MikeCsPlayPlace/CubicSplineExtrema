@@ -22,7 +22,7 @@ Running the Cubic Extrema program yields a single extrema at:
 
 Using the formula to compute the percent error, which in this case will be:
 
-<pre>% error = (( experiment – actual ) / actual) * 100</pre>
+<pre>    % error = (( experiment – actual ) / actual) * 100</pre>
 
 shows that we have an x, y errors of only 0%, 2.2% !
 
@@ -101,7 +101,7 @@ ___
 
 An equation from control system theory for an underdamped system was used to produce our next data set:
 
-<pre>   y(t) = 1 - sqrt(2) e<sup>-t</sup> cos(4t - 45<sup>o</sup>)</pre>
+<pre>    y(t) = 1 - sqrt(2) e<sup>-t</sup> cos(4t - 45<sup>o</sup>)</pre>
 
 And when the continuous underdamped function is plotted, we can see how wildly the output swings. This hints at how unpredictable this output may be with a generalized algorithm such as the Cubic Spline Extrema. Remember that our algorithm has no knowledge of the equation that yielded the test data points. It only has the points themselves as input data.
 
