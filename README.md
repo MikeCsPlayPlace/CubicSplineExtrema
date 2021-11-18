@@ -20,6 +20,6 @@ The algorithm was originally implemented in the C language and that is available
 
 To learn more about the algorithm, I have put together some details [here](https://mikecsplayplace.github.io/CubicSplineExtrema/CubicSplineExtremaAlgorithm.html). 
 
-A fairly extensive and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and some additional data. Also provided in that directory's [README](https://mikecsplayplace.github.io/CubicSplineExtrema/test_data/README.md) are detailed explanations of the input data, expected output data, results, and some pretty plots.
+A fairly extensive and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and some additional data. Also provided in that directory's [README](./test_data/README.md) are detailed explanations of the input data, expected output data, results, and some pretty plots.
 
 Next I will be converting the algorithm implementation into several other software languages, which are slated to be Java, Python, C#, and possibly C++. And these 'ports' will involve redesign into object-oriented versions of the original implementation.
