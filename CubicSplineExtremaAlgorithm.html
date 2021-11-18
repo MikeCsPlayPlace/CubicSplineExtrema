@@ -43,7 +43,7 @@
       constant with repect to finite changes in x.
       <br>Expressing equation 2 in the quadratic form 
       <tt><i>ax<sup>2</sup> + bx + c = 0</i></tt>
-      such that x can be solved, we get the components of the quadratic:
+      such that x can be solved, we get the coefficients of the quadratic:
       <br><tt><i>&nbsp;&nbsp;a = 3(y"<sub>i+1</sub> - y"<sub>i</sub>) </i></tt>
       <br><tt><i>&nbsp;&nbsp;b = 6(x<sub>i+1</sub>y"<sub>i</sub> - x<sub>i</sub>y"<sub>i+1</sub>) </i></tt>
       <br><tt><i>&nbsp;&nbsp;c = 6y<sub>i+1</sub> - 6y<sub>i</sub>
@@ -56,17 +56,29 @@
       ordinate extrema exists. If not, then no extrema lies within that particular spline interval.
       <h2>Overall Code Flow</h2>
       The code steps for applying the algorithm are:
-      <ol>
-        <li>Compute the second derivatives of each interval</li>
-        <li>Calculate the cubic extrema quadratic coefficents and compute the roots of the quadratic equation</li>
-        <li>Determine if the roots, which are candidate extremum abscissa, lie within the current interval</li>
-        <li>Determine the corresponding ordinate value for each valid extremum abscissa</li>
-      </ol>
+       <h3>Compute the Second Derivatives</h3>
+      The derivative form of the cubic spline has everything required to perform the calculation of the quadratic
+      coefficents except the second derivatives of the input data ordinates <tt>y"</tt>. 
+      Those can be computed as the solution of a system of N spline equations in N unknowns. 
+      The equations can be represented in symmetric triagonal form, and thus can be solved with a degenerate 
+      version of Gaussian elimination. 
 
-      <h3>Computing the Second Derivatives - TODO</h3>
-      <h3>Computing the Quadratic Roots - TODO</h3>
-      <h3>Performing Bounds Checking - TODO</h3>
-      <h3>Extremum-Ordinate Computation - TODO</h3>
+      <h3>Compute the Quadratic Roots</h3>
+      Once we have the second derivatives at the knows, we can solve for the quadratic coefficients shown earlier.
+      Because one or more coefficents may be very small, the results are computed using a quadratic solver that avoids
+      accuracy errors. The software implementation includes checks for conditions that could result in distastrous
+      operations, such as taking the square root of a negative number of dividing by zero.
+      Either of these indicates early-on that an interval does not have an extrema.
+      
+      <h3>Perform Bounds Checking</h3>
+      If at least one of the roots is a valid abscissa candidate, then bounds checking is performed to determine 
+      if the root lies within the current interval. It is does, then its a valid root and also an abscissa location 
+      at which an extremum lies.
+      
+      <h3>Calculate the Extremum-Ordinate</h3>
+      If a valid abscissa has been found, then it's utilized to compute the corresponding ordinate value (aka the y value).
+      Since the second derivative has already been computed, this calculation is easy using the standard equation for 
+      a cubic spline. If 
 
     </p>
 
