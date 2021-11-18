@@ -18,6 +18,8 @@ Here is the first of the 4 pages of my ramblings, and the code was printed at th
 
 The algorithm was originally implemented in the C language and that is available here and now in the `c_lang` directory. The reason it's in C is that it was the performance language of choice back then and that's what I knew well. Some time calibration for the "younger" readers here: In 1994 the biggest new movie at theaters was "The Lion King", and the Sony Playstation was released for the first time. And in 1996 when the algorithm was published, the theater hit was "Independence Day", and Nintendo 64 was launched !
 
+To learn more about the algorithm, I have put together some details [here](https://mikecsplayplace.github.io/CubicSplineExtrema/CubicSplineExtremaAlgorithm.html). 
+
 A fairly extension and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and additional data. Also provided are detailed explanations and plots of the data sets.
 
-Currently I am documenting the algorithm itself and an initial version is available [here](https://mikecsplayplace.github.io/CubicSplineExtrema/CubicSplineExtremaAlgorithm.html). After completing that, I will be making the algorithm implementation available in other software languages, which are slated to be Java, Python, C#, and possibly C++. And these 'ports' will involve redesign into object-oriented versions of the original implementation.
+Next I will be converting the algorithm implementation into several other software languages, which are slated to be Java, Python, C#, and possibly C++. And these 'ports' will involve redesign into object-oriented versions of the original implementation.
