@@ -26,7 +26,7 @@ Computing a percent error between the computed and the expected can be tricky. W
 
 <pre>    % error = (( computed – expected ) / expected) * 100</pre>
 
-There is much debate about error analysis, and there are more complicated formulas than the above. 
+There is much debate about error analysis, and it has been the subject of many other publications.
 The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable as the expected value approaches zero. Also, we are dealing with x and y values, and not just a single value. Hence, this is a 2 dimensional error. But for simplicity, we will look at the errors in the x and y dimensions separately, just as was done in the original article.
 
 Using the standard formula yields x and y errors of 0% and 8%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value.
