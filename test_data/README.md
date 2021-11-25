@@ -86,7 +86,9 @@ This data was created by using using the function
 
 <pre>    f(x) = x<sup>3</sup> - 2x<sup>2</sup> + x + 1</pre>
 
-That allows us to evaluate at precise locations of x to determine the precise expected y values. This function was furthermore used to create a stress-test case since we computed the y at regularly spaced x intervals, but then left out the middle section of data to mimic a lossy data set essentially.
+That allows us to evaluate at precise locations of x to determine the precise expected y values. This function was furthermore used to create a stress-test case since we computed the y at regularly spaced x intervals, but then left out the middle section of data to mimic a lossy data set essentially. 
+But more importantly, this results in a situation in which we have a miminum and a maximum both within the same interval! Hence I refer to this dataset as having 2 roots in the spline sense.
+
 
 Here is a plot of the data points that I used as the input data, overlaid with a best fit polynomial curve to give you an idea of where the extrema are.
 
