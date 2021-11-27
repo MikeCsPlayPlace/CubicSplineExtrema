@@ -22,4 +22,4 @@ To learn more about the algorithm, I have put together some details [here](https
 
 A fairly extensive and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and some additional data. Also provided in that directory's [README](./test_data/README.md) are detailed explanations of the input data, expected output data, results, and some pretty plots.
 
-Next I will be converting the algorithm implementation into several other software languages, which are slated to be Java, Python, C#, JavaScript, and C++.
+Currently I am converting the algorithm implementation into several other software languages. A preliminary version in C# is now available in the 'csharp_lang' directory. Slated next will Java, Python, JavaScript, and C++ in some stochastic order.
