@@ -22,12 +22,17 @@ Running the Cubic Extrema program yields a single extrema at:
 
 <tt>0.000000, 1.150000</tt>
 
-Computing a percent error between the computed and the expected can be tricky. We will use the standard formula here, which is:
+Computing a percent error between the computed and the expected can be tricky. In the original article I  used the standard formula here, which is:
 
 <pre>    % error = (( computed – expected ) / expected) * 100</pre>
 
-There is much debate about error analysis, and it has been the subject of many other publications.
-The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable and that the error goes to infinity as the expected value approaches zero. Also, we are dealing with x and y values, and not just a single value. Hence, this is a 2 dimensional error. But for simplicity, we will look at the errors in the x and y dimensions separately, just as was done in the original article.
+There is much debate about error analysis equations, and it has been the subject of many papers and books.
+The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable and that the error goes to infinity as the expected value approaches zero.
+
+So instead, I prefer the absolute Relative Percent Difference (aRPD), where
+<pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| ) ) * 100</pre>
+
+This tends to normalize things a bit better and has a much less change of the demoninator being zero. So the errors presented herein will use the aRPD method for the x and the y dimensions separately.
 
 Using the standard formula yields x and y errors of 0% and 8%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value.
 
