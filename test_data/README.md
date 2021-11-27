@@ -30,7 +30,7 @@ There is much debate about error analysis equations, and it has been the subject
 The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable and that the error goes to infinity as the expected value approaches zero.
 
 So instead, I prefer the absolute Relative Percent Difference (aRPD), where
-<pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| ) ) * 100</pre>
+<pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| )) * 100</pre>
 
 This tends to normalize things a bit better and has a much less change of the demoninator being zero. So the errors presented herein will use the aRPD method for the x and the y dimensions separately.
 
