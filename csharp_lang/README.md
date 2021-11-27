@@ -41,6 +41,6 @@ and you should see a prompt to enter the test data input file:
 
 `Enter name of the input file:`
 
-You can enter in the absolute path to the 'test_data' directory file, or if you are still in the csharp_lang directory, the following relative path example will do the trick:
+You can enter in the absolute path to the 'test_data' directory file, or if you are still in the 'csharp_lang' directory, the following relative path example will do the trick:
 
 `../test_data/4_point_symmetric_simple_maxima_data.csv`
