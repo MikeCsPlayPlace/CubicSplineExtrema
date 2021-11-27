@@ -8,14 +8,14 @@ Computing a percent error between the computed and the expected can be tricky. I
 
 <pre>    % error = (( computed – expected ) / expected) * 100</pre>
 
-There is much debate about error analysis equations, and it has been the subject of many papers and books.
-The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable and that the error goes to infinity as the expected value approaches zero.
+Error analysis equations have been the subject of many papers and books.
+The standard formula is less accurate and relevant when the numbers are smaller, since the % errors grow misleadingly larger as the denominator approaches 0. And then there is the question of what to do when the expected value is exactly 0, since we cannot divide by zero.
 
-So instead, I prefer the absolute Relative Percent Difference (aRPD), where
+So instead, I now prefer the absolute Relative Percent Difference (aRPD), where
 <pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| )) * 100</pre>
 
-This tends to normalize things a bit better and has a much less change of the demoninator being zero. However, I am using a modification of the equation that is used for QA sometimes ... to add 1 to the denominator if it is less than 1. That returns more weighting to the numerator for those cases.
-So the errors presented herein will use the modified aRPD method for the x and the y dimensions separately.
+This tends to normalize things a bit better and has a much less chance of the demoninator being zero. However, I am using a modification of the equation that is used by others sometimes in the QA world ... to add 1 to the denominator. But I am only doing so if it is less than 1. That moves more "weight" to the numerator for such cases. There may be better ways to represent errors that handle both large and small numbers, but this posting and software is not intended to solve that problem necessarily. You can inject your own error methods if you wish.
+So the errors presented herein will use my modified aRPD (maRPD) method for the x and the y dimensions separately. But also I will compute and provide a calculation of the composite error (i.e. the hypotenuse of the x and y vectors) and the overage average composite error. The latter provides a single representation of how well the algorithm and implementation performed.
 
 ---
 
