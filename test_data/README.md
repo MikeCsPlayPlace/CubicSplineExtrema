@@ -1,6 +1,8 @@
 # Test Data Details
 
-This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in the original article. As in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
+This is a description of the '.csv' data sets that were used in the development and testing of the algorithm. Most of these were presented in the original article. As in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
+
+The Main() method will read in the dataset file identified by the user, compute the extrema, and list out the computed results. Expected results are captured in files that mirror the input filenames, except that I have used an extension of '.expected_output.csv'. This allows the Main() program to search for that filename to also list out the expected results and indicate the percent error for each xy point.
 
 Computing a percent error between the computed and the expected can be tricky. In the original article I  used the standard formula here, which is:
 
