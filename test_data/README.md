@@ -1,6 +1,19 @@
 # Test Data Details
 
-This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in the original article. Like in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
+This is a description of the data sets that were used in the development and testing of the algorithm. Most of these were presented in the original article. As in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
+
+Computing a percent error between the computed and the expected can be tricky. In the original article I  used the standard formula here, which is:
+
+<pre>    % error = (( computed – expected ) / expected) * 100</pre>
+
+There is much debate about error analysis equations, and it has been the subject of many papers and books.
+The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable and that the error goes to infinity as the expected value approaches zero.
+
+So instead, I prefer the absolute Relative Percent Difference (aRPD), where
+<pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| )) * 100</pre>
+
+This tends to normalize things a bit better and has a much less change of the demoninator being zero. However, I am using a modification of the equation that is used for QA sometimes ... to add 1 to the denominator if it is less than 1. That returns more weighting to the numerator for those cases.
+So the errors presented herein will use the modified aRPD method for the x and the y dimensions separately.
 
 ---
 
@@ -22,19 +35,7 @@ Running the Cubic Extrema program yields a single extrema at:
 
 <tt>0.000000, 1.150000</tt>
 
-Computing a percent error between the computed and the expected can be tricky. In the original article I  used the standard formula here, which is:
-
-<pre>    % error = (( computed – expected ) / expected) * 100</pre>
-
-There is much debate about error analysis equations, and it has been the subject of many papers and books.
-The standard formula is less accurate and relevant when the numbers are smaller, since the results errors become grossly large despite the fact that they are not. And then there is the question of what to do when the expected value is 0? We cannot divide by zero. But that does make very clear that the formula is less applicable and that the error goes to infinity as the expected value approaches zero.
-
-So instead, I prefer the absolute Relative Percent Difference (aRPD), where
-<pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| )) * 100</pre>
-
-This tends to normalize things a bit better and has a much less change of the demoninator being zero. So the errors presented herein will use the aRPD method for the x and the y dimensions separately.
-
-Using the standard formula yields x and y errors of 0% and 8%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value.
+Using the aRPD formula yields x and y errors of 0% and 2%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value.
 
 This was a simple dataset to ease into things, but we will have more data sets that have precisely known expected values that are much better tests of accuracy.
 
@@ -60,7 +61,7 @@ The output from running the program is:
 
 <tt>0.077350, 1.096225</tt>
 
-The percent errors will be abnormally high since we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
+The percent errors will be abnormally for x since we are dealing with numbers very close to zero. Looking at the computed vs expected values indicates the results are quite good. But computing the aRPD yields an error that is misleadingly high (almost 200%). So that illustrates what I was talking ahigh since we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So this represents a worse case scenario for the most part, which is not realistic. The x error looks small when comparing the values (both close to zero), but computing the aRPD yields an error value y error is still within a few percent though.
 
 ---
 
