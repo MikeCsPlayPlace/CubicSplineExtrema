@@ -18,4 +18,8 @@ struct point {
     float x;
     float y;
 };
-
+/* prototypes */
+BOOL ComputeSecDerivs (unsigned int, float *, float *, float *);
+BOOL FindCubicExtrema (unsigned int, float *,float *, struct point *);
+BOOL FindQuadRoots (float, float, float, float *, float *);
+void ComputeY (unsigned int, float *, float, float *, float *, float *);

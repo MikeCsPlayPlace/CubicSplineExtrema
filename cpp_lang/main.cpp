@@ -5,11 +5,18 @@
 //  Created by Mike Courtney
 //
 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+*/
 #include "cubic.h"
+
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
 
@@ -26,8 +33,8 @@ int main(int argc, const char * argv[]) {
     float *x_in, *y_in;       /* arrays of x and y input data values */
     struct point *extr;       /* pointer to current extreme structure */
     /* open input data file and determine number of input points */
-    printf("\n Enter name of input file: ");
-    gets(data_file);
+    cout << "\n Enter name of input file: ";
+    cin >> data_file;
     if((fp = fopen(data_file, "r")) != NULL) {
         num_pnts = 0;
         while(!feof(fp)) {
@@ -35,11 +42,11 @@ int main(int argc, const char * argv[]) {
             num_pnts++;
         }
         num_pnts -= 1;
-        printf("\n The number of input points was %d.",num_pnts);
+        cout << "\n The number of input points was %d." << num_pnts << endl;
         
         /* allocate the input data arrays */
-        x_in = malloc(num_pnts * sizeof(float));
-        y_in = malloc(num_pnts * sizeof(float));
+        x_in = (float*)malloc(num_pnts * sizeof(float));
+        y_in = (float*)malloc(num_pnts * sizeof(float));
         
         /* read in the each data line and parse into x and y arrays */
         rewind(fp);
@@ -53,9 +60,9 @@ int main(int argc, const char * argv[]) {
             str[len] = '\0';
             x_in[i] = atof(str);
             /* get the y value */
-            printf("\n%d x=%s",i+1, str);
+            cout << "\n"+ (i+1) << "x=" << str;
             strcpy(str, line+len+1);
-            printf(" y=%s", str);
+            cout << " y=" << str << endl;
             y_in[i] = atof(str);
         }
         fclose(fp);
@@ -65,18 +72,18 @@ int main(int argc, const char * argv[]) {
         first_extr = extr;
         /* call the routine that computes the extrema */
         if (FindCubicExtrema(num_pnts, x_in, y_in, extr) == FAILURE) {
-            printf("\n\n No extrema found !\n");
+            cout << "\n\n No extrema found !" << endl;
         } else {
             /* print the linked list of extrema */
-            printf("\n\n Relative extrema computed:");
+            cout << "\n\n Relative extrema computed:";
             extr = first_extr;
             num_extr = 0;
             while (extr) {
-                printf("\n%d x=%f y=%f", num_extr+1, extr->x, extr->y);
+                cout << "\n" << num_extr+1 << "x=" << extr->x << "y=" << extr->y << endl;
                 extr = extr->next;
                 num_extr++;
             }
-            printf("\n\n");
+            cout << "\n\n";
         }
         free(x_in);
         free(y_in);
@@ -92,7 +99,7 @@ int main(int argc, const char * argv[]) {
         while (first_extr != NULL);
     }
     else {
-        printf("\n Couldn't open %s !", data_file);
+        cerr << "\n Couldn't open " << data_file << endl;
     }
     return 0;
 }
