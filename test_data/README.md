@@ -61,7 +61,7 @@ The output from running the program is:
 
 <tt>0.077350, 1.096225</tt>
 
-The percent errors will be abnormally for x since we are dealing with numbers very close to zero. Looking at the computed vs expected values indicates the results are quite good. But computing the aRPD yields an error that is misleadingly high (almost 200%). So that illustrates what I was talking ahigh since we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So this represents a worse case scenario for the most part, which is not realistic. The x error looks small when comparing the values (both close to zero), but computing the aRPD yields an error value y error is still within a few percent though.
+The percent errors would be abnormally for x since we are dealing with numbers very close to zero, if we were not using the modified aRPD equation. The x value of 14% still seems higher than desired, but remember that we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So this represents a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
 
 ---
 
@@ -117,11 +117,12 @@ The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
 
 <tt>1.087392, 1.010887</tt>
 
-Those represent errors of approxiately of 2.3% and 0.0% for first extrema, and 8.7% and 1.0% for the second.
+Those represent errors of approxiately of less than 1% for the first extrema x, and approximately 0% for the y. 
+The second extrema had errors of roughly 8.4% and 1%.
 
 ---
 
-*15_point_underdamped_second_order.csv*
+*15_point_underdamped.csv*
 
 An equation from control system theory for an underdamped system was used to produce our next data set:
 
@@ -165,7 +166,7 @@ Computed:
 
 <tt>3.270703, 0.948298</tt>
   
-You can see by visual inspection that we corrected detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset.
+You can see by visual inspection that we correctly detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset. The first extrema has differences of about 5% and 10%, but all the rest are less than 0.5% and some are close to 0%.
 
 ___
 
@@ -195,6 +196,6 @@ Computed via Cubic Extrema algorithm:
 
 <tt>2.409465, 1.935627</tt>
 
-Those represent errors of between 0.0 and 3.5% for all the values.
+Those represent errors of between 0.0 and 3.6% for all the values.
 
 
