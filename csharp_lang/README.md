@@ -16,8 +16,8 @@ And verify that it was added:
 `dotnet sln list`
 
 These actions will also have created a Program.cs file, which we don't care about since we are not starting from scratch here ... so you can delete it.
-Then use the C# compiler on the .cs file that we will be running, which is CubicSplineExtrema.cs.
-`csc CubicSplineExtrema.cs`
+If compiling from the command line, then use this to build the main program while pulling in the utility classes as well:
+`csc CubicSplineExtrema.cs ErrorAnalysisUtils.cs MathUtils.cs`
 
 You should now see a new file called CubicSplineExtrema.exe
 On Windows you can invoke this directly via command line.
@@ -25,7 +25,7 @@ On Windows you can invoke this directly via command line.
 But on a Mac you will have to use Mono, which is the cross-platform .NET framework.
 `$ mono CubicSplineExtrema.exe`
 and you should see a prompt to enter the test data input file:
+`Enter name of the input file:`
 
-`Enter name of the input file: /Users/mikecourtney/dev/CubicSplineExtrema/test_data/4_point_symmetric_simple_maxima_data.csv`
-or a relative path such as:
+You can enter in the absolute path to the 'test_data' directory file, or if you are still in the csharp_lang directory, the following relative path example will do the trick:
 `Enter name of the input file: ../test_data/4_point_symmetric_simple_maxima_data.csv`
