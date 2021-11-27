@@ -1,8 +1,8 @@
 # Test Data Details
 
-This is a description of the '.csv' data sets that were used in the development and testing of the algorithm. Most of these were presented in the original article. As in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results.
+This is a description of the '.csv' data sets that were used in the development and testing of the algorithm. Most of these were presented in the original Dr. Dobbs Journal article. As in the article, here I will present details of why I chose these data, their challenges and benefits, and the expected "ideal" output results. The implemented program will read in the dataset file identified by the user, compute the extrema, and list out the computed results. 
 
-The Main() method will read in the dataset file identified by the user, compute the extrema, and list out the computed results. Expected results are captured in files that mirror the input filenames, except that I have used an extension of '.expected_output.csv'. This allows the Main() program to search for that filename to also list out the expected results and indicate the percent error for each xy point.
+I have also captured the expected results in files that mirror the input filenames, except that I have used an extension of '.expected_output.csv'. This allows for easy identification of them, but also in the newer ports of the algorithm I have implemented code that will search for that filename to also list out the expected results and indicate the percent error for each xy point. In the original article (written in C) I manually calculated the resulting errors.
 
 Computing a percent error between the computed and the expected can be tricky. In the original article I  used the standard formula here, which is:
 
@@ -15,7 +15,7 @@ So instead, I now prefer the absolute Relative Percent Difference (aRPD), where
 <pre>    % error = 2 *  (| computed – expected | / ( |computed| + |expected| )) * 100</pre>
 
 This tends to normalize things a bit better and has a much less chance of the demoninator being zero. However, I am using a modification of the equation that is used by others sometimes in the QA world ... to add 1 to the denominator. But I am only doing so if it is less than 1. That moves more "weight" to the numerator for such cases. There may be better ways to represent errors that handle both large and small numbers, but this posting and software is not intended to solve that problem necessarily. You can inject your own error methods if you wish.
-So the errors presented herein will use my modified aRPD (maRPD) method for the x and the y dimensions separately. But also I will compute and provide a calculation of the composite error (i.e. the hypotenuse of the x and y vectors) and the overage average composite error. The latter provides a single representation of how well the algorithm and implementation performed.
+So the errors presented herein will use my modified aRPD method, which I will refer to as 'maRPD', for the x and the y dimensions separately. But also I will compute and provide a calculation of the composite error (i.e. the hypotenuse of the x and y vectors) and the overage average composite error. The latter provides a single comprehensive representation of how well the algorithm and implementation performed.
 
 ---
 
@@ -37,7 +37,7 @@ Running the Cubic Extrema program yields a single extrema at:
 
 <tt>0.000000, 1.150000</tt>
 
-Using the aRPD formula yields x and y errors of 0% and 2%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, and we are in the ballpark with our computed y value.
+Using the aRPD formula yields x and y errors of 0% and 2%, which isn't too bad since we don't know what the actual expected y value is anyway. We do know that the x will be 0 though since it's symmetric, which the algorithm nailed, and we are in the ballpark with our computed y value. And the composite error is 2%.
 
 This was a simple dataset to ease into things, but we will have more data sets that have precisely known expected values that are much better tests of accuracy.
 
@@ -63,7 +63,7 @@ The output from running the program is:
 
 <tt>0.077350, 1.096225</tt>
 
-The percent errors would be abnormally for x since we are dealing with numbers very close to zero, if we were not using the modified aRPD equation. The x value of 14% still seems higher than desired, but remember that we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So this represents a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though.
+The percent errors would be abnormally for x since we are dealing with numbers very close to zero, if we were not using the modified aRPD equation. The x value of 14% still seems higher than desired, but remember that we are dealing with approximations of input <i>and</i> output, very small numbers in which slight variations will have high impact, and very limited data. So this represents a worse case scenario for the most part, which is not realistic. The y error is still within a few percent though. And the composite error is 14.4%.
 
 ---
 
@@ -87,7 +87,7 @@ The Cubic Extrema algorithm should yield a single xy pair and it does indeed at 
 
 <tt>34896.043, 17469.068</tt>
 
-This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to determine the expected "correct" values. And the errors are about 0.1% and 0.0% for the x and y respectively.
+This represents a much more accurate scenario in which to compute a percent error, since we have actual equations that were used to determine the expected "correct" values. And the errors are about 0.1% and 0.0% for the x and y respectively. And the composite error is also 0.1%.
 
 ---
 
@@ -120,7 +120,7 @@ The Cubic Extrema algorithm correctly computed 2 extrema, which were at:
 <tt>1.087392, 1.010887</tt>
 
 Those represent errors of approxiately of less than 1% for the first extrema x, and approximately 0% for the y. 
-The second extrema had errors of roughly 8.4% and 1%.
+The second extrema had errors of roughly 8.4% and 1%. And the composite error is ~4.7%.
 
 ---
 
@@ -168,7 +168,7 @@ Computed:
 
 <tt>3.270703, 0.948298</tt>
   
-You can see by visual inspection that we correctly detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset. The first extrema has differences of about 5% and 10%, but all the rest are less than 0.5% and some are close to 0%.
+You can see by visual inspection that we correctly detected 5 extrema, and that all the values are within reason. Some xy pairs are more accurate than others in this wildly varying dataset. The first extrema has differences of about 5% and 10%, but all the rest are less than 0.5% and some are close to 0%. And the average composite error is only ~2.3%.
 
 ___
 
@@ -198,6 +198,6 @@ Computed via Cubic Extrema algorithm:
 
 <tt>2.409465, 1.935627</tt>
 
-Those represent errors of between 0.0 and 3.6% for all the values.
+Those represent errors of between 0.0 and 3.6% for all the values, and an average composite error of only about 2.7%.
 
 
