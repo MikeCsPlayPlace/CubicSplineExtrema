@@ -2,7 +2,7 @@
 
 This is the port and redesign of the original Cubic Spline Extrema algorithm implementation from the C language into C#.
 
-If running VSCode on a mac, you may first have to install scriptcs via:
+If running VSCode on a mac, you may first have to install 'scriptcs' via:
 `brew install scriptcs`
 
 Also make sure that you have the 'C# for Visual Studio Code (powered by OmniSharp)' extension installed. That will also install the dotnet application.
