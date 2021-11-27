@@ -12,12 +12,13 @@
       Incidentally, the term 'spline' originates from drafting, in which pieces of wood were used to 'draw' smooth curves by bending them between knots. 
       Those pieces of wood were called splines. The shape assumbes by the spline between the knots is essentially a third degress (or cubic) polynomial.
       A disadvantage of tradition polynomial interpolators that attempt to solve complicated data-fitting is that they attempt to derive an
-      single algorithm that satisfies all the data points. And furthermore, iterative searching across those curves is required to 
+      single algorithm that satisfies all the data points. And furthermore, iterative searching and interpolation within those curves is required to 
       hunt for the extrema.
       However, spline interpolation computes a different polynomial at each interval. 
       And my algorithm takes that a step further by forcing constraints at the knots while computing derivatives such that we yield equations
       that describe the existence and location of any extrema within each spline.
-      This process directly yields the x values without the need for iterative searching. The y values are then computed based upon the associated spline equation.
+      This process directly yields the x values without the need for iterative searching. 
+      The y values are then computed based upon the associated spline equation.
       The original derivation of the algorithm spans several handwritten pages that I still possess. Here are the final equations that came out of that work.
     </p>
     <h2>Derivation</h2>
