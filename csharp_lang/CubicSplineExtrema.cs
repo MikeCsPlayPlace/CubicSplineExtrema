@@ -101,7 +101,7 @@ namespace CubicSplineExtrema {
                     float y = float.Parse(xyPoint[1]);
                     points.Add(new PointF {X=x, Y=y});
                 }  catch (FormatException) {
-                    Console.WriteLine($"Error in {dataFile} converting point {xyPoint} into floats.");
+                    Console.WriteLine($"Error in {dataFile} parsing point {xyPoint}.");
                     System.Environment.Exit(1);
                 }
             }
@@ -111,23 +111,23 @@ namespace CubicSplineExtrema {
         // Given abscissa (x) location, compute corresponding cubic spline ordinate (y) value.
         private static void ComputeY (
             int i,             // input - array index
-            float xValue,      // input - x value at which to solve for y
+            float ? xValue,      // input - x value at which to solve for y
             PointF[] inputPoints,     // input - array of y values
-            float[] secondDerivs, // input - array of second derivatives of each data interval
+            double[] secondDerivs, // input - array of second derivatives of each data interval
             out float yValue)   // output - address of y extreme value at x
         {
-            float A, B, C, D; // cubic spline coefficients
-            //TODO: should we check for xValue of null coming in, 
+            double A, B, C, D; // cubic spline coefficients
+            //TODO: should check for xValue of null coming in, 
             // and also be able to return a null yValue?
             // Compute the standard cubic spline coefficients
-            A = (inputPoints[i + 1].X - xValue) / (inputPoints[i + 1].X - inputPoints[i].X);
+            A = (double)(inputPoints[i + 1].X - xValue) / (inputPoints[i + 1].X - inputPoints[i].X);
             B = 1 - A;
-            float ftemp = (float) Math.Pow((double)(inputPoints[i + 1].X - inputPoints[i].X), 2.0f) / 6.0f;
-            C = (A * A * A - A) * ftemp;
-            D = (B * B * B - B) * ftemp;
+            double temp = Math.Pow(inputPoints[i + 1].X - inputPoints[i].X, 2.0) / 6.0;
+            C = (A * A * A - A) * temp;
+            D = (B * B * B - B) * temp;
 
             // compute the ordinate value at the abscissa location
-            yValue = A * inputPoints[i].Y + B * inputPoints[i + 1].Y + C * secondDerivs[i] + D * secondDerivs[i + 1];
+            yValue = (float)(A * inputPoints[i].Y + B * inputPoints[i + 1].Y + C * secondDerivs[i] + D * secondDerivs[i + 1]);
         }
 
         // Perform bounds checking to ensure that the root is within the spline interval
@@ -150,7 +150,7 @@ namespace CubicSplineExtrema {
         
         public void ComputeExtrema(PointF[] inputPoints, out List<PointF> extremaPoints)
         {
-            float a, b, c;  // coefficients of quadratic equation
+            double a, b, c;  // coefficients of quadratic equation
             float ? x1 = 0.0f, x2 = 0.0f;   // roots of quadratic equation to be computed 
             extremaPoints = new List<PointF>(); // the extrema that we are computing
 
@@ -171,7 +171,7 @@ namespace CubicSplineExtrema {
             }
 
             // Compute the second derivatives 
-            float[] secondDerivs;
+            double[] secondDerivs;
             MathUtils.ComputeSecondDerivatives(inputPoints, out secondDerivs);
             
             // Loop through all the input points and find the extrema
@@ -180,16 +180,16 @@ namespace CubicSplineExtrema {
                 MathUtils.ComputeQuadraticCoefficients(inputPoints, secondDerivs, i, out a, out b, out c);
                 MathUtils.ComputeQuadraticRoots(a, b, c, out x1, out x2);
 
-                float y1=0f, y2=0f;
+                float y1=0.0f, y2=0.0f;
 
                 if (isRootValid(ref x1, i, inputPoints)) {
                     // compute the corresponding value of y1 at the extreme x1 value
-                    ComputeY(i, (float)x1, inputPoints, secondDerivs, out y1);
+                    ComputeY(i, x1, inputPoints, secondDerivs, out y1);
                 }
 
                 if (isRootValid(ref x2, i, inputPoints)) {
                     // compute the corresponding value of y2 at the extreme x2 value 
-                    ComputeY(i, (float)x2, inputPoints, secondDerivs, out y2);
+                    ComputeY(i, x2, inputPoints, secondDerivs, out y2);
                 }
 
                 // Add them to the list in ascending order of X. 

@@ -19,17 +19,17 @@ namespace CubicSplineExtrema {
         }
 
         // Compute modified absolute Relative Percent Difference (aRPD)
-        internal static float ComputeAbsRelativePercentDiff(float computed, float expected) {
+        internal static float ComputeAbsRelativePercentDiff(double computed, double expected) {
             // aRPD = 2|𝑎−𝑏| / |𝑎|+|𝑏|
-            float denominator = Math.Abs(computed) + Math.Abs(expected);
-            if (denominator==0.0f) {
+            double denominator = Math.Abs(computed) + Math.Abs(expected);
+            if (denominator==0.0) {
                 return 0.0f;
             }
             // modification to handle small denominators that cause misleading results
-            if (denominator<1.0f) {
-                denominator += 1.0f;
+            if (denominator<1.0) {
+                denominator += 1.0;
             }
-            return 2.0f * Math.Abs(computed - expected) / denominator * 100.0f;
+            return (float)(2.0 * Math.Abs(computed - expected) / denominator * 100.0);
         }
     }
 }

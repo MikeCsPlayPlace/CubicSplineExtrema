@@ -1,6 +1,6 @@
 using System;
-using System.Drawing; // PointF
 using System.Collections.Generic; // List
+using System.Drawing; // PointF
 
 namespace CubicSplineExtrema {
 
@@ -8,20 +8,20 @@ namespace CubicSplineExtrema {
     class MathUtils {
 
         public static void ComputeSecondDerivatives (
-            PointF[] inputPoints, out float[] secondDerivs)
+            PointF[] inputPoints, out double[] secondDerivs)
         {
             int   i = 0;
             int numPoints = inputPoints.Length;
-            float[] mainDiag = new float[numPoints - 2];
-            float[] diag = new float[numPoints - 1];
-            float[] right = new float[numPoints - 2];
+            double[] mainDiag = new double[numPoints - 2];
+            double[] diag = new double[numPoints - 1];
+            double[] right = new double[numPoints - 2];
 
             // Compute the matrix main and off-diagonal values
             // Even though the calling program is suppose to have guaranteed that the
             // input x values are increasing, assert that neither of the diagonal
             // differences are zero to avoid a divide by zero condition.
             for (i = 1; i < numPoints - 1; i++) {
-                mainDiag[i-1] = 2.0f * (inputPoints[i+1].X - inputPoints[i-1].X);
+                mainDiag[i-1] = 2.0 * (inputPoints[i+1].X - inputPoints[i-1].X);
                 //TODO
                 //assert(mainDiag[i-1] > 0);
             }
@@ -33,20 +33,20 @@ namespace CubicSplineExtrema {
 
             // Compute right hand side of equation
             for (i = 1; i < numPoints - 1; i++) {
-                right[i-1] = 6.0f * ((inputPoints[i+1].Y - inputPoints[i].Y)/
+                right[i-1] = 6.0 * ((inputPoints[i+1].Y - inputPoints[i].Y)/
                     diag[i] - (inputPoints[i].Y - inputPoints[i-1].Y ) / diag[i-1]);
             }
 
             // Forward eliminate tridiagonal
-            secondDerivs = new float[numPoints];
-            secondDerivs[0] = 0.0f;
-            secondDerivs[numPoints - 1] = 0.0f;
+            secondDerivs = new double[numPoints];
+            secondDerivs[0] = 0.0;
+            secondDerivs[numPoints - 1] = 0.0;
 
-            float ftemp;
+            double temp;
             for (i = 1; i < numPoints - 2; i++) {
-                ftemp = diag[i] / mainDiag[i];
-                right[i] -= (right[i-1] * ftemp);
-                mainDiag[i] -= (diag[i-1] * ftemp);
+                temp = diag[i] / mainDiag[i];
+                right[i] -= (right[i-1] * temp);
+                mainDiag[i] -= (diag[i-1] * temp);
             }
 
             // Backward substitution to solve for second derivative at each knot
@@ -55,15 +55,11 @@ namespace CubicSplineExtrema {
             }
         }
 
-        /*  
-        Given an abscissa (x) location, computes the corresponding cubic spline
-        ordinate (y) value.
-        */
-
+        // Given an abscissa (x) location, compute the corresponding cubic spline ordinate (y) value.
         public static void ComputeQuadraticRoots(
-            float a, float b, float c, out float? x1, out float? x2) 
+            double a, double b, double c, out float? x1, out float? x2) 
         {
-            float d;   // root algorithm variable 
+            double d;   // root algorithm variable 
             x1 = null; // init to null so the caller knows if we did not set this
             x2 = null; // ditto
 
@@ -72,12 +68,12 @@ namespace CubicSplineExtrema {
                 return;
             }
 
-            d = (float)Math.Sqrt((double)d);
+            d = Math.Sqrt(d);
             // Make the result of sqrt the sign of b
             if (b < 0 ) {
                 d = -d;
             }
-            d = -0.5f * (b + d);
+            d = -0.5 * (b + d);
 
             // Solve for the roots of the quadratic.
             // If both root computations will yield divide by zero ... fahget about it! 
@@ -87,18 +83,18 @@ namespace CubicSplineExtrema {
             
             // Compute first root if denominator a is not zero 
             if (a != 0) {
-                x1 = d / a;
+                x1 = (float)(d / a);
             }
 
             // Compute second root if denominator d is not zero 
             if (d != 0) {
-                x2 = c / d;
+                x2 = (float)(c / d);
             }
         }
 
         public static void ComputeQuadraticCoefficients(
-            PointF[] inputPoints, float[] secondDerivs, int i,
-            out float a, out float b, out float c) 
+            PointF[] inputPoints, double[] secondDerivs, int i,
+            out double a, out double b, out double c) 
         {
 
             a = 3 * (secondDerivs[i+1] - secondDerivs[i]);
