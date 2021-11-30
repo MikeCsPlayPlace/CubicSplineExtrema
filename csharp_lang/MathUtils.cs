@@ -20,15 +20,12 @@ namespace CubicSplineExtrema {
             // Even though the calling program is suppose to have guaranteed that the
             // input x values are increasing, assert that neither of the diagonal
             // differences are zero to avoid a divide by zero condition.
+
             for (i = 1; i < numPoints - 1; i++) {
                 mainDiag[i-1] = 2.0 * (inputPoints[i+1].X - inputPoints[i-1].X);
-                //TODO
-                //assert(mainDiag[i-1] > 0);
             }
             for (i = 0; i < numPoints - 1; i++) {
                 diag[i] = inputPoints[i+1].X - inputPoints[i].X;
-                //TODO
-                //assert(diag[i] > 0);
             }
 
             // Compute right hand side of equation
@@ -53,6 +50,7 @@ namespace CubicSplineExtrema {
             for (i = numPoints - 2; i > 0; i--) {
                 secondDerivs[i] = (right[i-1] - diag[i-1] * secondDerivs[i+1]) / mainDiag[i-1];
             }
+
         }
 
         // Given an abscissa (x) location, compute the corresponding cubic spline ordinate (y) value.
@@ -81,7 +79,8 @@ namespace CubicSplineExtrema {
                 return;
             }
             
-            // Compute first root if denominator a is not zero 
+            // Compute first root if denominator a is not zero. 
+            // Note that these are not throwable situations, but instead how to test for a valid root.
             if (a != 0) {
                 x1 = (float)(d / a);
             }

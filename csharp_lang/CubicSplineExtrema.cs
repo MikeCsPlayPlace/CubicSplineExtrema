@@ -9,59 +9,63 @@ namespace CubicSplineExtrema {
 
 
             string dataFile;
-
-            Console.Write("Enter name of the input file: ");
-            dataFile = Console.ReadLine();
+            TextWriter errorWriter = Console.Error;
             
             CubicSplineExtrema extrema = new CubicSplineExtrema();
-            List<PointF> inputPoints = extrema.CsvFileReader(dataFile);
-            List<PointF> extremaPoints;
+            try {
+                Console.Write("Enter name of the input file: ");
+                dataFile = Console.ReadLine();
+                List<PointF> inputPoints = extrema.CsvFileReader(dataFile);
+                List<PointF> extremaPoints;
 
-            Console.WriteLine("\nInput points: " + inputPoints.Count);
-            //using foreach loop
-            foreach(var point in inputPoints)
-            {
-                Console.WriteLine(point);
-            }
-
-            // Call the method that does the heavy lifting
-            extrema.ComputeExtrema(inputPoints.ToArray(), out extremaPoints);
-
-            // print the resulting list of extrema 
-            Console.WriteLine("\nExtrema computed: " + extremaPoints.Count);
-            foreach(var point in extremaPoints) {
-                Console.WriteLine(point);
-            }
-
-            String expectedResultsFile = dataFile.Replace("csv", "expected_output.csv");
-            List<PointF> expectedPoints = extrema.CsvFileReader(expectedResultsFile);
-
-            bool doesExtremaCountMatch = true;
-            if (expectedPoints.Count!=extremaPoints.Count) {
-                doesExtremaCountMatch =false;
-                Console.WriteLine("Error: The number of extrema computed does not match expected.");
-                Console.WriteLine("Therefore unable to compute percent errors for each pair.");
-            }
-            Console.WriteLine("\nExtrema expected: " + expectedPoints.Count);
-
-            int i = 0;
-            float avgCompositeError = 0.0f;
-            foreach(var point in expectedPoints) {
-                Console.Write(point);
-                // Make sure we have a 1-to-1 set of xy pairs
-                if (doesExtremaCountMatch) {
-                    PointF error = ErrorAnalysisUtils.ComputeAbsRelativePercentDiff(extremaPoints[i], point);
-                    Console.Write($"   % aPRD = {error.X}, {error.Y} ");
-                    float compositeError = ErrorAnalysisUtils.ComputeCompositeAbsRelativePercentDiff(error);
-                    Console.Write($"  Composite={compositeError}%");
-                    avgCompositeError += compositeError;
-                    i++;
+                Console.WriteLine("\nInput points: " + inputPoints.Count);
+                //using foreach loop
+                foreach(var point in inputPoints) {
+                    Console.WriteLine(point);
                 }
-                Console.Write("\n");
-            }
-            if (doesExtremaCountMatch) {
-                avgCompositeError = avgCompositeError/expectedPoints.Count;
-                Console.WriteLine($"Average Composite Error = {avgCompositeError}%");
+
+                // Call the method that does the heavy lifting
+                extrema.ComputeExtrema(inputPoints.ToArray(), out extremaPoints);
+
+                // print the resulting list of extrema 
+                Console.WriteLine("\nExtrema computed: " + extremaPoints.Count);
+                foreach(var point in extremaPoints) {
+                    Console.WriteLine(point);
+                }
+
+                String expectedResultsFile = dataFile.Replace("csv", "expected_output.csv");
+                List<PointF> expectedPoints = extrema.CsvFileReader(expectedResultsFile);
+
+                bool doesExtremaCountMatch = true;
+                if (expectedPoints.Count!=extremaPoints.Count) {
+                    doesExtremaCountMatch =false;
+                    Console.WriteLine("The number of extrema computed does not match expected.");
+                    Console.WriteLine("Therefore unable to compute percent errors for each pair.");
+                }
+                Console.WriteLine("\nExtrema expected: " + expectedPoints.Count);
+
+                int i = 0;
+                float avgCompositeError = 0.0f;
+                foreach(var point in expectedPoints) {
+                    Console.Write(point);
+                    // Make sure we have a 1-to-1 set of xy pairs
+                    if (doesExtremaCountMatch) {
+                        PointF error = ErrorAnalysisUtils.ComputeAbsRelativePercentDiff(extremaPoints[i], point);
+                        Console.Write($"   % aPRD = {error.X}, {error.Y} ");
+                        float compositeError = ErrorAnalysisUtils.ComputeCompositeAbsRelativePercentDiff(error);
+                        Console.Write($"  Composite={compositeError}%");
+                        avgCompositeError += compositeError;
+                        i++;
+                    }
+                    Console.Write("\n");
+                }
+                if (doesExtremaCountMatch) {
+                    avgCompositeError = avgCompositeError/expectedPoints.Count;
+                    Console.WriteLine($"Average Composite Error = {avgCompositeError}%");
+                }
+            } catch (Exception e) {
+                errorWriter.WriteLine(e.Message);
+                System.Environment.Exit(1);
             }
         }
 
@@ -70,39 +74,30 @@ namespace CubicSplineExtrema {
             // Note: using List because it preserves order
             List<PointF> points = new List<PointF>();
 
-            TextWriter errorWriter = Console.Error;
             string[] lines = null;
             try {
                 lines = System.IO.File.ReadAllLines(@dataFile);
             } catch (Exception e) {
-                errorWriter.WriteLine(e.Message);
-                System.Environment.Exit(1);
+                throw e;
             }
 
             if (lines.Length==0) {
-                errorWriter.WriteLine($"No lines were read from the input file {dataFile}. Terminating.");
-                System.Environment.Exit(1);
+                throw new Exception($"No lines were read from the input file {dataFile}. Terminating.");
             }
 
             foreach (string line in lines) {
 
                 string[] xyPoint = line.Split(',');
                 if (xyPoint.Length!=2) {
-                    Console.WriteLine($"Invalid format in {dataFile} at line={line}. Expected something like:");
-                    Console.WriteLine("\t14, 2\tor\t14.1,2.0");
-                    if (xyPoint.Length>2) {
-                        Console.WriteLine($"You may have unexpected commas within your values (e.g. 1,400). Please remove them.");
-                    }
-                    System.Environment.Exit(1);
+                    throw new Exception($"Invalid format in {dataFile} at line={line}");
                 }
                 
                 try {
                     float x = float.Parse(xyPoint[0]);
                     float y = float.Parse(xyPoint[1]);
                     points.Add(new PointF {X=x, Y=y});
-                }  catch (FormatException) {
-                    Console.WriteLine($"Error in {dataFile} parsing point {xyPoint}.");
-                    System.Environment.Exit(1);
+                }  catch (FormatException fe) {
+                    throw new Exception($"Error {fe} {dataFile} parsing point {xyPoint}.");
                 }
             }
             return points;
@@ -110,15 +105,23 @@ namespace CubicSplineExtrema {
 
         // Given abscissa (x) location, compute corresponding cubic spline ordinate (y) value.
         private static void ComputeY (
-            int i,             // input - array index
-            float ? xValue,      // input - x value at which to solve for y
-            PointF[] inputPoints,     // input - array of y values
+            int i, // input - array index
+            float ? xValue, // input - x value at which to solve for y
+            PointF[] inputPoints, // input - array of y values
             double[] secondDerivs, // input - array of second derivatives of each data interval
-            out float yValue)   // output - address of y extreme value at x
-        {
+            out float yValue // output - address of y extreme value at x
+        ) {
             double A, B, C, D; // cubic spline coefficients
-            //TODO: should check for xValue of null coming in, 
-            // and also be able to return a null yValue?
+
+            if (xValue == null) {
+                throw new Exception("ComputeY() xValue cannot be null");
+            }
+            // We are supposed to have input X values that are are adjacient and non-duplicated,
+            // but check for an issue anyway.
+            if (inputPoints[i + 1].X == inputPoints[i].X) {
+                throw new Exception("ComputeY() input X axis data values must be unique");
+            }
+
             // Compute the standard cubic spline coefficients
             A = (double)(inputPoints[i + 1].X - xValue) / (inputPoints[i + 1].X - inputPoints[i].X);
             B = 1 - A;
@@ -154,19 +157,16 @@ namespace CubicSplineExtrema {
             float ? x1 = 0.0f, x2 = 0.0f;   // roots of quadratic equation to be computed 
             extremaPoints = new List<PointF>(); // the extrema that we are computing
 
-            TextWriter errorWriter = Console.Error;
             int numPoints = inputPoints.Length;
 
             // Make sure we have at least 3 points !!!
             if (numPoints < 3) {
-                errorWriter.WriteLine("Less than 3 input points were read, which cannot contain an extremum !");
-                System.Environment.Exit(1);
+                throw new Exception("Less than 3 input points were read, which cannot contain an extremum !");
             }
             // Ensure that the X values we were fed are increasing
             for (int i = 0; i < numPoints - 1; i++) {
                 if (inputPoints[i].X >= inputPoints[i+1].X) {
-                    errorWriter.WriteLine("Input data must have values that are increasing in the X direction !");
-                    System.Environment.Exit(1);
+                    throw new Exception("Input data must have values that are increasing in the X direction !");
                 }
             }
 
