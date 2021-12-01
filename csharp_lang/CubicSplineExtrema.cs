@@ -134,10 +134,10 @@ namespace CubicSplineExtrema {
         }
 
         // Perform bounds checking to ensure that the root is within the spline interval
-        static bool isRootValid(ref float ? x, int i, PointF[] inputPoints) {
+        static bool DetermineIfValidRoot(ref float ? x, int i, PointF[] inputPoints) {
             
-            bool isRootValid = (x!=null && (x > inputPoints[i].X) && (x < inputPoints[i+1].X));
-            if (!isRootValid) {
+            bool IsRootValid = (x!=null && (x > inputPoints[i].X) && (x < inputPoints[i+1].X));
+            if (!IsRootValid) {
                 x = null;
                 return false;
             }
@@ -182,12 +182,12 @@ namespace CubicSplineExtrema {
 
                 float y1=0.0f, y2=0.0f;
 
-                if (isRootValid(ref x1, i, inputPoints)) {
+                if (DetermineIfValidRoot(ref x1, i, inputPoints)) {
                     // compute the corresponding value of y1 at the extreme x1 value
                     ComputeY(i, x1, inputPoints, secondDerivs, out y1);
                 }
 
-                if (isRootValid(ref x2, i, inputPoints)) {
+                if (DetermineIfValidRoot(ref x2, i, inputPoints)) {
                     // compute the corresponding value of y2 at the extreme x2 value 
                     ComputeY(i, x2, inputPoints, secondDerivs, out y2);
                 }
