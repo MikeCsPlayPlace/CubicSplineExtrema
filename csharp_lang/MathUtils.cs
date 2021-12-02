@@ -17,10 +17,6 @@ namespace CubicSplineExtrema {
             double[] right = new double[numPoints - 2];
 
             // Compute the matrix main and off-diagonal values
-            // Even though the calling program is suppose to have guaranteed that the
-            // input x values are increasing, assert that neither of the diagonal
-            // differences are zero to avoid a divide by zero condition.
-
             for (i = 1; i < numPoints - 1; i++) {
                 mainDiag[i-1] = 2.0 * (inputPoints[i+1].X - inputPoints[i-1].X);
             }
