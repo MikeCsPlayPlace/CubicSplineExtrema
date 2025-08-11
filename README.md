@@ -20,7 +20,8 @@ Also, since these page photos are hard to read, here is the text in html form th
 ![3rd page](pg38.jpg) 
 ![4th page](pg40.jpg)
 
-The algorithm was originally implemented in the C language and that is available here and now in the `c_lang` directory.
+The algorithm was originally implemented in the C language and that is available in the `c_lang` directory.
+I also ported it to C# and that is located in the 'charp_lang' directory.
 To learn more about the algorithm, I have put together some details [here](https://mikecsplayplace.github.io/CubicSplineExtrema/CubicSplineExtremaAlgorithm.html). 
 
 A fairly extensive and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and some additional data. Also provided in that directory's [README](./test_data/README.md) are detailed explanations of the input data, expected output data, results, and some pretty plots.
