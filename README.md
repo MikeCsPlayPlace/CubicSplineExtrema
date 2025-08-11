@@ -12,8 +12,8 @@ For some background, I actually came up with the algorithm when my then-boss cam
 
 But by then my boss had already found a different approach for his needs, so I sat my work aside for a couple years until I decided to generalize the algorithm a bit more and then coded it in the C language to fully test it out ... and it actually worked ! So I thought it was worth sharing with others and submitted an abstract to Dr. Dobb's. And they contracted me to write up a full article based on my work. Yay !
 
-Here is the first of the 4 pages of my ramblings, and the code was printed at the back and is available here in this repository.
-Also, since these page photos are hard to read, here is the text in html form that might be easier, but just not as glossy.
+Here are the first of the 4 pages of my ramblings, and the code was printed at the back and is available here in this repository.
+Also, since these magazine page photos are hard to read, here is most of text in html form that might be easier, but just not as fancy and comprehensive.
 
 ![1st page](pg34.jpg)
 ![2nd page](pg36.jpg) 
