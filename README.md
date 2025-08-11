@@ -13,9 +13,10 @@ For some background, I actually came up with the algorithm when my then-boss cam
 But by then my boss had already found a different approach for his needs, so I sat my work aside for a couple years until I decided to generalize the algorithm a bit more and then coded it in the C language to fully test it out ... and it actually worked ! So I thought it was worth sharing with others and submitted an abstract to Dr. Dobb's. And they contracted me to write up a full article based on my work. Yay !
 
 Following are the first of the 4 pages of my ramblings.
-Also, since these magazine page photos are hard to read, here is an abridged version of article text that's easier to ready. But it's just not as fancy and glossy.
+But since these magazine page photos are hard to read, here is an abridged version of the article text that's easier to ready. But it's just not as fancy and glossy.
 [here](https://mikecsplayplace.github.io/CubicSplineExtrema/CubicSplineExtremaAlgorithm.html). 
-
+A fairly extensive and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. 
+It contains the original data and some of the plots I used in the article and some additional data. Also provided in that directory's [README](./test_data/README.md) are detailed explanations of the input data, expected output data, results, and some pretty plots.
 
 ![1st page](pg34.jpg)
 ![2nd page](pg36.jpg) 
@@ -23,7 +24,5 @@ Also, since these magazine page photos are hard to read, here is an abridged ver
 ![4th page](pg40.jpg)
 
 The code that was printed at the back of the magazine was originally implemented in the C language and is available in the `c_lang` directory of this repo.
-
-A fairly extensive and varying collection of test data were used in the development and testing of the algorithm. Most of these are captured in the `test_data` directory. It contains the original data I used in the article and some additional data. Also provided in that directory's [README](./test_data/README.md) are detailed explanations of the input data, expected output data, results, and some pretty plots.
 
 A preliminary (but functional) version in C# is also available in the 'csharp_lang' directory.
