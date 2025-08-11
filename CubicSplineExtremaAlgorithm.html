@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cubic Spline Extrema Algorithm</title>
+    <title>A Cubic Spline Extrema Algorithm</title>
     <meta name="google-site-verification" content="t0kzZqY3XPevrEjHSQYU5nOs7AQEk2640LC_4_i7MFU" />  
   </head>
   <body>
-    <h1>Cubic Spline Extrema Algorithm</h1>
-    <h2>Overview</h2>
+    <h1>Determining discrete data-set extremes</h1>
+    <h2>Mike J Courtney</h2>
+    <p>
+      When collecting or computing discrete data (particularly time-varying data), the resulting resolution often is limited by influences such as computational burden, A/D sampling rates, storage limitations, 
+      and transmit rates. This can be a problem when you are interested in the data that describes the minimum and/or maximum values within the continuous function. 
+      Examples of this include the determination of the true peak of a computed-signal cross-correlation profile and the reconstruction of the precise peaks and valleys of an environmental measurement. 
+      Determining these minima and maxima, collectively referred to as "extrema," requires interpolation between the known discrete data points. 
+      However, if the interpolation resolution is too course, the true extrema might be overlooked; if the resolution is too fine, the computation takes entirely too long. William Press et al. point out a 
+      number of algorithms for more efficiently finding the extrema of a data set in Numerical Recipes in C, Second Edition (Cambridge University Press, 1988). 
+      These algorithms typically consist of bracketed searches and are often iterative.
+      In this article, I'll present an alternative approach derived from the well-established equation for cubic-spline interpolation. 
+      This approach performs a direct, noniterative determination of the extrema of a discrete data set.
+    </p>
+    <h2>Algorithm Overview</h2>
     <p>The cubic spline extrema algorithm computes the relative extrema (i.e. maximums and minimums) of the continuous function that describes a discrete data set.
     <p>It uses all the given data to compute second derivatives at each point, which are called knots in cubic spline parlance.
       Incidentally, the term 'spline' originates from drafting, in which pieces of wood were used to 'draw' smooth curves by bending them between knots. 
@@ -23,7 +35,7 @@
       The y values are then computed based upon the associated spline equation.
       The original derivation of the algorithm spans several handwritten pages that I still possess. Here are the final equations that came out of that work.
     </p>
-    <h2>Derivation</h2>
+    <h2>Algorithm Derivation</h2>
     <p>
       The goal of cubic spline intepolation is to derive an interpolation formula in which the the first and second derivatives of the spline 
       polynomials are equals at the knots. This results in a formula with interval splines that intersect at the knots while exhibiting 
