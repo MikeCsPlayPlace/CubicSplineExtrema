@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://mikecsplayplace.github.io/CubicSplineExtrema/CubicSplineExtremaAlgorithm.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Cubic Spline Extrema Algorithm</title>
+    <meta name="google-site-verification" content="t0kzZqY3XPevrEjHSQYU5nOs7AQEk2640LC_4_i7MFU">  
+  </head>
+  <body>
+    <h1>Cubic Spline Extrema Algorithm</h1>
+    <h2>Overview</h2>
+    <p>The cubic spline extrema algorithm computes the relative extrema (i.e. maximums and minimums) of the continuous function that describes a discrete data set.
+    </p><p>It uses all the given data to compute second derivatives at each point, which are called knots in cubic spline parlance.
+      Incidentally, the term 'spline' originates from drafting, in which pieces of wood were used to 'draw' smooth curves by bending them between knots. 
+      Those pieces of wood were called splines. The shape made by the spline between the knots is essentially a third degree (or cubic) polynomial.
+      A disadvantage of tradition polynomial interpolators that attempt to solve complicated data-fitting is that they attempt to derive a
+      single algorithm that satisfies all the data points. And furthermore, iterative searching and interpolation within those curves is required to 
+      hunt for the extrema.
+    </p>
+    <p>
+      However, spline interpolation computes a different polynomial at each interval. 
+      And my algorithm takes that a step further by forcing constraints at the knots while computing derivatives such that we yield equations
+      that describe the existence and location of any extrema within each spline.
+      This process directly yields the x values without the need for iterative searching. 
+      The y values are then computed based upon the associated spline equation.
+      The original derivation of the algorithm spans several handwritten pages that I still possess. Here are the final equations that came out of that work.
+    </p>
+    <h2>Derivation</h2>
+    <p>
+      The goal of cubic spline intepolation is to derive an interpolation formula in which the the first and second derivatives of the spline 
+      polynomials are equals at the knots. This results in a formula with interval splines that intersect at the knots while exhibiting 
+      a smooth transition from one interval to the next.
+      Given a data set described by the general function y<sub>j</sub> = y(x<sub>j</sub>),
+      the linear interpolation in the interval between x<sub>i</sub> and x<sub>i+1</sub> 
+      can be expressed as equation 1:
+      <br><tt><i>&nbsp;&nbsp;y = Ay<sub>i</sub> + By<sub>i+1</sub> + Cy" + Dy"<sub>i+1</sub> </i></tt>
+      <br>where <i>"</i> denotes the second derivative and the following apply:
+      <br><tt><i>&nbsp;&nbsp;A = (x<sub>i+1</sub> - x) / (x<sub>i+1</sub> - x<sub>i</sub>) </i></tt>
+      <br><tt><i>&nbsp;&nbsp;B = 1 - A </i></tt>
+      <br><tt><i>&nbsp;&nbsp;C = ⅙ [(A<sup>3</sup> - A)(x<sub>i+1</sub> - x<sub>i</sub>)<sup>2</sup>] </i></tt>
+      <br><tt><i>&nbsp;&nbsp;D = ⅙ [(B<sup>3</sup> - B)(x<sub>i+1</sub> - x<sub>i</sub>)<sup>2</sup>] </i></tt>
+      <br>The first derivative of our equation for <i>y</i> is denoted as <i>dy/dx</i> and is solved as equation 2:
+      <br><tt><i>&nbsp;&nbsp;dy/dx = (y<sub>i+1</sub> - y<sub>i</sub>) / (x<sub>i+1</sub> - x<sub>i</sub>) - 
+        ⅙ [(3A<sup>2</sup> - 1)(x<sub>i+1</sub> - x<sub>i</sub>) * y"<sub>i</sub>] + 
+        ⅙ [(3B<sup>2</sup> - 1)(x<sub>i+1</sub> - x<sub>i</sub>) * y"<sub>i+1</sub>]
+      </i></tt>
+    </p>
+    <p>
+      If you then take this further and set the above equation to 0, then a new equation can be derived
+      that represents the extrema of our first equation. This then allows the identification of the points at which <i>y</i> remains 
+      constant with respect to finite changes in <i>x</i>.
+      <br>Expressing equation 2 in the quadratic form 
+      <tt><i>ax<sup>2</sup> + bx + c = 0</i></tt>
+      such that x can be solved, we get the coefficients of the quadratic:
+      <br><tt><i>&nbsp;&nbsp;a = 3(y"<sub>i+1</sub> - y"<sub>i</sub>) </i></tt>
+      <br><tt><i>&nbsp;&nbsp;b = 6(x<sub>i+1</sub>y"<sub>i</sub> - x<sub>i</sub>y"<sub>i+1</sub>) </i></tt>
+      <br><tt><i>&nbsp;&nbsp;c = 6y<sub>i+1</sub> - 6y<sub>i</sub>
+        - (2x<sup>2</sup><sub>i+1</sub> - x<sup>2</sup><sub>i</sub> + 2x<sub>i</sub>x<sub>i+1</sub>) * y"<sub>i</sub> 
+        - (x<sup>2</sup><sub>i+1</sub> - 2x<sup>2</sup><sub>i</sub> - 2x<sub>i</sub>x<sub>i+1</sub>) * y"<sub>i+1</sub>
+      </i></tt>
+      <br>and solving for that quadratic is essentially the foundation of cubic extrema equation.
+      <br> Using these cubic-extrema quadratic coefficents and quadratic root solver yields the candidate extrema.
+      If they lie within the current interval of examination then they are a valid abscissa value at which the 
+      ordinate extrema exists. If not, then no extrema lies within that particular spline interval.
+      </p><h2>Overall Code Flow</h2>
+      The code steps for applying the algorithm are:
+       <h4>Compute the Second Derivatives</h4>
+      The derivative form of the cubic spline has everything required to perform the calculation of the quadratic
+      coefficents except the second derivatives of the input data ordinates <tt>y"</tt>. 
+      Those can be computed as the solution of a system of N spline equations in N unknowns. 
+      The equations can be represented in symmetric triagonal form, and thus can be solved with a degenerate 
+      version of Gaussian elimination.
+
+      <h4>Compute the Quadratic Roots</h4>
+      Once we have the second derivatives at the knows, we can solve for the quadratic coefficients shown earlier.
+      Because one or more coefficents may be very small, the results are computed using a quadratic solver that avoids
+      accuracy errors. The software implementation includes checks for conditions that could result in distastrous
+      operations, such as taking the square root of a negative number of dividing by zero.
+      Either of these indicates early-on that an interval does not have an extrema.
+      
+      <h4>Perform Bounds Checking</h4>
+      If at least one of the roots is a valid abscissa candidate, then bounds checking is performed to determine 
+      if the root lies within the current interval. It is does, then its a valid root and also an abscissa location 
+      at which an extremum lies.
+      
+      <h4>Calculate the Extremum-Ordinate</h4>
+      If a valid abscissa has been found, then it's utilized to compute the corresponding ordinate value (aka the y value).
+      Since the second derivative has already been computed, this calculation is easy using the standard equation for 
+      a cubic spline.
+
+    <p></p>
+
+  
+
+</body></html>
